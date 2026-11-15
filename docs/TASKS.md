@@ -1,6 +1,11 @@
-# Tasks
-- [ ] Design and implement: Build a fast file-search and workspace-inspection CLI with filters, JSON output and error codes.
-- [ ] Prove: Cross-platform integration tests, binary packaging and sample workflows.
-- [ ] Create real scripts/verify.ps1 and CI
-- [ ] Document release candidate and limitations
+﻿# Tasks
 
+- [x] Define original v0.1 contract, stack ADR, and integration test matrix.
+- [x] Add verification script with explicit prerequisites and substantive Go checks.
+- [ ] Bootstrap Go/Cobra and literal search with contract and misuse tests.
+- [ ] Add extension filters and JSON with tests.
+- [ ] Add workspace inspection with tests.
+- [ ] Package binaries and add native Windows/Linux/macOS CI.
+- [ ] Document runnable sample workflows, release candidate, and limitations.
+
+Prerequisite: install Go and expose go and gofmt on PATH. Initial inspection found no implementation or unfinished changes.
