@@ -1,0 +1,12 @@
+*.log
+.env
+.env.*
+!.env.example
+node_modules/
+.venv/
+bin/
+obj/
+dist/
+build/
+__pycache__/
+
