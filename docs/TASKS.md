@@ -9,3 +9,5 @@
 - [ ] Document runnable sample workflows, release candidate, and limitations.
 
 Prerequisite: install Go and expose go and gofmt on PATH. Initial inspection found no implementation or unfinished changes.
+
+Prerequisite rechecked on 2026-11-15 at clean baseline 170dc70: go and gofmt remain unavailable; verification exits 1. Bootstrap remains blocked pending Go installation and a reopened shell.

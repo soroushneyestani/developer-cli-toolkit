@@ -18,3 +18,13 @@ Observed checks:
 Exact next action: install Go with go and gofmt on PATH, reopen the shell, then implement the Go/Cobra literal-search slice and contract/misuse tests. Use Windows PowerShell to invoke verification if pwsh remains inaccessible. Tool installation was not attempted outside the authorized repository.
 
 Git ownership mismatch was handled using per-command safe.directory configuration scoped to this repository; no global configuration changed. No push or external target testing occurred.
+
+## 2026-11-15 - Bootstrap prerequisite recheck
+
+Attempted next task: Go/Cobra literal-search bootstrap. Read all required files, SPEC, ADR, verification script, history and status. Baseline was clean at 170dc70 with no unfinished implementation.
+
+- Get-Command found neither go nor gofmt on PATH.
+- Windows PowerShell invocation of scripts/verify.ps1: exit 1, diagnostic: Go is required on PATH. Install Go, reopen the shell, and rerun scripts/verify.ps1.
+- Formatting, vet, tests, native build, integration and packaging: NOT RUN; toolchain unavailable and no module exists.
+
+Human action: install Go with go and gofmt on PATH, reopen the shell and confirm go version and gofmt -h resolve. No installation outside the repository was attempted. Status remains in_progress; v0.1 is not runnable or verified. Existing substantive verification checks were preserved.

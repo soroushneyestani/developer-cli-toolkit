@@ -18,3 +18,5 @@ until the module, implementation, and tests exist. Packaging and native CI remai
 future work.
 On Windows, `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/verify.ps1`
 also works when the pwsh launcher is unavailable.
+
+Latest prerequisite recheck: neither go nor gofmt resolves on PATH. Install Go and reopen the shell before resuming bootstrap.

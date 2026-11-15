@@ -1,6 +1,6 @@
-﻿{
-  "next_action": "Install Go on PATH, then bootstrap Go/Cobra literal search with contract and misuse tests",
-  "status": "in_progress",
-  "blocker": "Go toolchain unavailable on PATH; executable checks cannot run",
-  "verified": false
+{
+    "next_action":  "Install Go on PATH, then bootstrap Go/Cobra literal search with contract and misuse tests",
+    "status":  "in_progress",
+    "blocker":  "Rechecked 2026-11-15: go and gofmt unavailable on PATH; install Go and reopen shell before bootstrap",
+    "verified":  false
 }
