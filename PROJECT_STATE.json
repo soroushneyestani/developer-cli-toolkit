@@ -1,6 +1,7 @@
 {
-    "next_action":  "Install Go on PATH, then bootstrap Go/Cobra literal search with contract and misuse tests",
+    "next_action":  "Verify packaging and exercise the native Windows, Linux, and macOS CI matrix",
     "status":  "in_progress",
-    "blocker":  "Rechecked 2026-11-15: go and gofmt unavailable on PATH; install Go and reopen shell before bootstrap",
+    "blocker":  null,
+    "evidence":  "docs/EVIDENCE.md",
     "verified":  false
 }

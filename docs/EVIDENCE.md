@@ -28,3 +28,12 @@ Attempted next task: Go/Cobra literal-search bootstrap. Read all required files,
 - Formatting, vet, tests, native build, integration and packaging: NOT RUN; toolchain unavailable and no module exists.
 
 Human action: install Go with go and gofmt on PATH, reopen the shell and confirm go version and gofmt -h resolve. No installation outside the repository was attempted. Status remains in_progress; v0.1 is not runnable or verified. Existing substantive verification checks were preserved.
+
+## 2026-11-18 — Runnable CLI and Windows contract tests
+
+- Go and gofmt resolved on PATH. `go version` reported `go1.27.4 windows/amd64`. No install was required. The `pwsh` launcher remains inaccessible, so local script checks use Windows PowerShell.
+- Added search and inspect, suffix filters, NDJSON, deterministic sorting, scoped read-only traversal, and the documented exit statuses.
+- `go test -count=1 -v ./...` passed on Windows (3.608 s). File and directory symlink fixtures ran and passed. The POSIX chmod and colon/tab filename fixtures skipped with explicit reasons.
+- `go test -mod=readonly -run '^TestSearchReportsWindowsSharingViolation$' -v` passed (1.902 s). A Windows sharing lock prevented reading a fixture. The process returned exit 2 with a diagnostic after emitting the prior match.
+- `go vet -mod=readonly ./...` and `go build -mod=readonly -buildvcs=false -trimpath -o bin/dct.exe .` passed. The executable printed `dct version 0.1.0`.
+- Cross-compilation, workflow lint and native Linux/macOS checks remain separate release evidence.

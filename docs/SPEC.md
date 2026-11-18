@@ -19,7 +19,7 @@ Search text: `path:line:text`. Inspect text: `path<TAB>bytes`. Text delimiters c
 
 Search JSON fields: `path` (string), `line` (integer), `text` (string). Inspect JSON fields: `path` (string), `bytes` (integer). Emit diagnostics only to stderr. Empty results emit no records.
 
-Exit 0: search has matches, or inspection succeeds (including empty directories). Exit 1: completed search has no matches. Exit 2: usage, root, traversal, or read error. Partial results may precede errors; consumers must check exit status.
+Exit 0: search has matches, or inspection succeeds (including empty directories). Exit 1: completed search has no matches. Exit 2: usage, root, traversal, read, or output error. Partial results may precede errors; consumers must check exit status. An empty root argument is invalid. On Unix, NDJSON represents any invalid UTF-8 in filenames with replacement characters.
 
 ## Integration proof
 
