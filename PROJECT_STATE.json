@@ -1,7 +1,8 @@
 {
-    "next_action":  "Verify packaging and exercise the native Windows, Linux, and macOS CI matrix",
-    "status":  "in_progress",
-    "blocker":  null,
+    "next_action":  "Record native Linux and macOS verification results, then move the release candidate to review",
+    "status":  "blocked",
+    "blocker":  "The hosted CI matrix has not run and this Windows environment has no accessible Linux or macOS runner. An authorized private feature-branch CI run or native hosts are required.",
     "evidence":  "docs/EVIDENCE.md",
+    "verified_windows":  true,
     "verified":  false
 }

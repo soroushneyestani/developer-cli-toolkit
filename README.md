@@ -9,11 +9,10 @@ The original Go/Cobra implementation takes inspiration from the recursive search
 Use Go 1.26 or newer. Use Go 1.27.4 to match the verified Windows toolchain.
 
 ```powershell
-go build -mod=readonly -buildvcs=false -trimpath -o bin/dct.exe .
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/verify.ps1
 ```
 
-On Linux or macOS, build to `bin/dct` and run verification with `pwsh -NoProfile -File scripts/verify.ps1`.
+The verifier checks formatting, module integrity, vet, tests, and the native build. It writes `bin/dct.exe` on Windows and `bin/dct` on Linux and macOS. Use `pwsh -NoProfile -File scripts/verify.ps1` with PowerShell 7.
 
 ## Usage
 
@@ -49,6 +48,12 @@ Set-Content -Encoding ascii bin/demo/notes.txt 'TODO: review the change'
 ```
 
 Use NDJSON when paths or contents can contain output delimiters. Read it one line at a time and decode each record independently.
+
+## Packaging
+
+Run `pwsh -NoProfile -File scripts/package.ps1` with Go 1.27.4. On Windows PowerShell, use `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/package.ps1`. A successful run creates a directory under `dist/` with ZIP archives for Linux amd64, Windows amd64, and macOS arm64, plus `SHA256SUMS.txt`. Verify each archive's SHA-256 before extraction. On a Unix host, run `chmod +x dct` if the extracted binary lacks the execute bit.
+
+The [CI workflow](.github/workflows/ci.yml) defines native verification on Windows, Linux and macOS, and makes archive upload depend on those jobs. [Evidence](docs/EVIDENCE.md) records which checks have run.
 
 ## Architecture and limits
 

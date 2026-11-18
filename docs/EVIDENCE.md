@@ -37,3 +37,14 @@ Human action: install Go with go and gofmt on PATH, reopen the shell and confirm
 - `go test -mod=readonly -run '^TestSearchReportsWindowsSharingViolation$' -v` passed (1.902 s). A Windows sharing lock prevented reading a fixture. The process returned exit 2 with a diagnostic after emitting the prior match.
 - `go vet -mod=readonly ./...` and `go build -mod=readonly -buildvcs=false -trimpath -o bin/dct.exe .` passed. The executable printed `dct version 0.1.0`.
 - Cross-compilation, workflow lint and native Linux/macOS checks remain separate release evidence.
+
+## 2026-11-18 — Release packaging and verification
+
+- Windows PowerShell `scripts/verify.ps1` exited 0. Formatting, module integrity, vet, process-level contract tests and native build passed. The Go test package reported 4.961 s. The Windows sharing-violation test passed, and two POSIX-specific fixtures skipped. An isolated unformatted Go fixture caused the verifier to fail with exit 1.
+- The README search and inspection examples passed on a synthetic workspace.
+- `scripts/package.ps1` built CGO-disabled Linux amd64, Windows amd64 and macOS arm64 archives. Independently checked ZIP CRCs, SHA-256 digests, target binary headers, release notes and dependency notices. The extracted Windows binary produced the expected search result. Invalid build flags produced a nonzero exit and left prior release directories intact.
+- Local archives: `dist/dct-20261118T114738Z-993774766c8e4d81bedd4c47b3feb139/`, with digests in `SHA256SUMS.txt`.
+- `actionlint v1.7.12` found zero GitHub Actions workflow errors. ShellCheck and Pyflakes were unavailable. The workflow invokes checked-in PowerShell scripts.
+- `govulncheck v1.10.0` exited 0 with no vulnerabilities found. `gitleaks v8.30.1` exited 0 with no leaks across four commits and the staged release changes. Scans ran locally against this repository.
+- `go test -c -mod=readonly -buildvcs=false` compiled the Linux amd64 and macOS arm64 test binaries separately.
+- Native Linux/macOS tests and hosted CI were not run. WSL access was denied in this session and the repository has no remote. An authorized private feature-branch matrix run or native Linux and macOS hosts are needed before release review. Cross-compilation demonstrates buildability for those targets.

@@ -5,7 +5,8 @@
 - [x] Bootstrap Go/Cobra and literal search with contract and misuse tests.
 - [x] Add extension filters and JSON with tests.
 - [x] Add workspace inspection with tests.
-- [ ] Package binaries and add native Windows/Linux/macOS CI.
-- [ ] Document runnable sample workflows, release candidate, and limitations.
+- [x] Package binaries and add a native Windows/Linux/macOS CI matrix.
+- [x] Document runnable sample workflows, release candidate, and limitations.
+- [ ] Run the native Linux and macOS jobs and record their results before release review.
 
-Go and gofmt resolved on PATH on 2026-11-18. Windows native contract tests pass.
+Windows native verification, local release packaging, workflow lint, and security scans passed. The hosted matrix awaits an authorized private feature-branch run or verification on native Linux and macOS hosts.
