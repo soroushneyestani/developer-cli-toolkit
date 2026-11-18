@@ -7,6 +7,7 @@
 - [x] Add workspace inspection with tests.
 - [x] Package binaries and add a native Windows/Linux/macOS CI matrix.
 - [x] Document runnable sample workflows, release candidate, and limitations.
-- [ ] Run the native Linux and macOS jobs and record their results before release review.
+- [x] Run the native Linux and macOS jobs and record their results before release review.
+- [ ] Verify the fixed Windows checkout and the complete hosted packaging pipeline.
 
-Windows native verification, local release packaging, workflow lint, and security scans passed. The hosted matrix awaits an authorized private feature-branch run or verification on native Linux and macOS hosts.
+Windows native verification, local release packaging, workflow lint, and security scans passed. Hosted Linux and macOS verified successfully. The first hosted Windows checkout used CRLF for Go sources and failed formatting. The checkout fix awaits the complete CI run.

@@ -14,6 +14,8 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/verify.ps1
 
 The verifier checks formatting, module integrity, vet, tests, and the native build. It writes `bin/dct.exe` on Windows and `bin/dct` on Linux and macOS. Use `pwsh -NoProfile -File scripts/verify.ps1` with PowerShell 7.
 
+Git checks out Go sources with LF endings on every platform so `gofmt` sees the same source bytes on Windows and Unix.
+
 ## Usage
 
 ```text

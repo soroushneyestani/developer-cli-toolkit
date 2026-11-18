@@ -48,3 +48,9 @@ Human action: install Go with go and gofmt on PATH, reopen the shell and confirm
 - `govulncheck v1.10.0` exited 0 with no vulnerabilities found. `gitleaks v8.30.1` exited 0 with no leaks across four commits and the staged release changes. Scans ran locally against this repository.
 - `go test -c -mod=readonly -buildvcs=false` compiled the Linux amd64 and macOS arm64 test binaries separately.
 - Native Linux/macOS tests and hosted CI were not run. WSL access was denied in this session and the repository has no remote. An authorized private feature-branch matrix run or native Linux and macOS hosts are needed before release review. Cross-compilation demonstrates buildability for those targets.
+
+## 2026-11-18 — Native CI checkout consistency
+
+- The first [private hosted matrix](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44305452488) passed on Linux and macOS. Windows reported all five Go sources as unformatted and packaging was skipped.
+- A local index checkout with `core.autocrlf=true` reproduced the same five `gofmt` findings. After declaring LF checkout for Go files, the same fixture produced zero formatting findings. The native Windows verifier passed.
+- The corrected hosted Windows and packaging jobs await the next feature-branch run.
