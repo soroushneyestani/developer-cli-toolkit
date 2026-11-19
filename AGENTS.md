@@ -1,6 +1,6 @@
 # AGENTS.md — Engineering Mastery project policy
 
-Work directly in the current VS Code Codex session on this original project inside the user's F: workspace. Keep the workspace manifest and progress report current.
+Work directly in the current session on this original project. Keep the Engineering Mastery manifest and progress report current when working in that workspace.
 
 ## Scope and ethics
 - Never access, rewrite, delete or search outside the active project directory.

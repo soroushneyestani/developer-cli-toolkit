@@ -70,3 +70,15 @@ Human action: install Go with go and gofmt on PATH, reopen the shell and confirm
 - The authenticated download for artifact `14528472864` matched the retained local outer archive byte for byte. SHA-256 and CRC verification passed for the outer ZIP and three target ZIPs. The retained manifest matches the outer ZIP member, and each target digest matches that manifest. The three candidate executable payloads match their historical equivalents byte for byte.
 - Ran the Windows executable extracted from artifact `14528472864` against synthetic fixtures. It reported `dct version 0.1.0` and produced the expected README and Persian tutorial NDJSON with inspection sizes of 24 and 29 bytes. The no-match case returned 1 and the malformed suffix case returned 2. Linux and macOS archive payloads were checked for integrity and executable format. Native execution on those platforms was exercised by CI's native builds.
 - The canonical artifact, retained local paths, and checksum manifest are now aligned for `release_review`. Final acceptance is pending. [Release evidence](RELEASE_EVIDENCE.md) · [Pinned manifest](RELEASE_SHA256SUMS.txt)
+
+## 2026-11-19 — Streaming engineering candidate
+
+- Native Windows verification passed locally. Eighteen synthetic differential cases preserved the v0.1.0 text and JSON output, status and absence of spilled files after exit.
+- CI for `541aff83f8675b5d6aac9c98a28adcc1228fb052` passed on all three native platforms and uploaded the candidate package. Checked its outer and per-platform hashes and ran the direct packaged Windows smoke. [Exact CI run 44540116482](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482) · [Verified build artifact 14537687323](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482/artifacts/14537687323)
+- Recorded the representative working-set and elapsed-time changes and their tradeoffs separately from the product contract. [Benchmark evidence](BENCHMARKS.md) · [Release evidence](RELEASE_EVIDENCE.md)
+
+## 2026-11-19 — Open-source preparation
+
+- Rechecked the native Windows verifier with Go 1.27.4. Seventy-two additional seeded comparisons against the released binary preserved stdout, stderr and exit status across short and oversized lines, invalid bytes, and dense output.
+- Confirmed the 50 recorded benchmark samples and both benchmark executable digests. The three local preparation ZIPs retained the previously reviewed runtime bytes and passed CRC, SHA-256, release-material and machine-header checks after adding required license packaging. [Benchmark evidence](BENCHMARKS.md) · [Release procedure](releases/OPEN_SOURCE_RELEASE.md)
+- Compared the historical Git refs with the private remote, verified the dependency notices, and screened the existing history and hosted records. The owner's decisions about rights, historical Git author metadata and the older release remain open. [Publication checklist](../FINAL_PUBLICATION_CHECKLIST.md)

@@ -1,6 +1,6 @@
 # ADR 0002: Scoped filesystem reads and complete-file validation
 
-Status: accepted
+Status: accepted for v0.1.0. The [streaming search ADR](0003-streaming-search.md) supersedes the complete-file allocation decision. Filesystem scope and ordering still use this design.
 
 `dct` checks that the supplied root is a directory and rejects a symbolic link at that path. It opens the directory with `os.OpenRoot` to constrain descendant operations to the opened tree. The filesystem walk skips symlink entries and sorts all selected, slash-separated paths because recursive directory order can differ from relative path order.
 

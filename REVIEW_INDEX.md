@@ -1,25 +1,31 @@
-# A02 Developer CLI Toolkit v0.1.0 review index
+# A02 Developer CLI Toolkit engineering review
 
-A02 is in `release_review`. The implementation, tests, and review documents follow their repository paths in the review ZIP. Extract the whole archive into one directory and open this file to follow the relative links offline.
+A02 is in `release_review` for `v0.1.1`. The historical `v0.1.0` release is the baseline. [Historical v0.1.0 release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0) · [Published asset provenance](docs/releases/v0.1.0.md)
+
+PR #2 carries the open-source release preparation. The checklist tracks release verification, and the release procedure records how the full source and packages are published. [Final publication checklist](FINAL_PUBLICATION_CHECKLIST.md) · [Release procedure](docs/releases/OPEN_SOURCE_RELEASE.md) · [PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2)
+
+The ownership, historical email, and release-asset decisions are recorded separately. [Final publication decisions](FINAL_PUBLICATION_DECISIONS.md)
 
 ## Documentation
 
 - [README](README.md) covers setup, installation, and command examples.
-- [Changelog](CHANGELOG.md) describes the v0.1.0 changes.
+- [Changelog](CHANGELOG.md) describes both the released baseline and the streaming candidate.
 - [Persian learning guide](docs/LEARNING_FA.md), [English portfolio article](docs/WEBSITE_EN.md), and [English Instagram copy](docs/INSTAGRAM_EN.md) are ready for content review.
 - [Project state](PROJECT_STATE.json) records the release review status. [Project tasks](docs/TASKS.md) record the outstanding approval.
 
 ## Implementation and verification
 
-- [CLI specification](docs/SPEC.md), [CLI contract decision](docs/adr/0001-cli-contract.md), and [workspace I/O decision](docs/adr/0002-workspace-io.md) explain the implemented behavior.
-- [Command entry points](main.go) and [workspace traversal, search, and inspection](workspace.go) contain the implementation.
+- [CLI specification](docs/SPEC.md), [CLI contract decision](docs/adr/0001-cli-contract.md), and [streaming search decision](docs/adr/0003-streaming-search.md) explain the implemented behavior.
+- [Command entry points](main.go), [workspace traversal and inspection](workspace.go), and [streaming search](stream_search.go) contain the implementation.
 - [Search integration tests](search_test.go), [inspection and options integration tests](options_test.go), and [Windows sharing-violation test](search_windows_test.go) exercise the executable.
-- [Test summary](docs/TEST_SUMMARY.md), [release evidence](docs/RELEASE_EVIDENCE.md), and [verification history](docs/EVIDENCE.md) record the checked results and their scope.
+- [Test summary](docs/TEST_SUMMARY.md), [release evidence](docs/RELEASE_EVIDENCE.md), [benchmark evidence](docs/BENCHMARKS.md), and [verification history](docs/EVIDENCE.md) record the checked results and their scope.
 - [Local verifier](scripts/verify.ps1), [packaging script](scripts/package.ps1), and [GitHub Actions workflow](.github/workflows/ci.yml) define the runnable checks.
-- [Release SHA-256 manifest](docs/RELEASE_SHA256SUMS.txt) lists the three distribution archive digests. [Third-party notices](THIRD_PARTY_NOTICES.md) identify their redistributed components.
+- [Published v0.1.0 SHA-256 manifest](docs/releases/v0.1.0-SHA256SUMS.txt) lists the three released distribution archive digests. [Third-party notices](THIRD_PARTY_NOTICES.md) identify their redistributed components.
 
-## Release candidate package
+## Verified 0.1.1-rc.1 package
 
-The v0.1.0 binary candidate comes from run `44523796632` at `1d41dcc0184a7fad5e09e1e7c9ee6cefc37dd930` on `codex/a02`. The link to the artifact requires repository access and is subject to GitHub Actions retention. [Private candidate CI run](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44523796632) · [Private candidate artifact 14528472864](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44523796632/artifacts/14528472864) · [Private draft PR #1](https://github.com/soroushneyestani/developer-cli-toolkit/pull/1)
+The candidate is pinned to `541aff83f8675b5d6aac9c98a28adcc1228fb052`. Verify the three platform archives against the candidate manifest before extracting a platform package. The retained package path and outer checksum are in the release evidence. [Release evidence](docs/RELEASE_EVIDENCE.md) · [Candidate SHA-256 manifest](docs/releases/v0.1.1-rc.1-SHA256SUMS.txt) · [PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2) · [Exact CI run 44540116482](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482) · [Verified build artifact 14537687323](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482/artifacts/14537687323)
 
-In the extracted review ZIP, `artifacts/dct-packages.zip` is the preserved copy of the candidate artifact. Its outer digest is recorded in the [test summary](docs/TEST_SUMMARY.md). Extract it into a separate directory to see the three target ZIPs and their bundled checksum manifest. The review ZIP also includes `SOURCE_OVERVIEW.md`, `RELEASE_CHECKLIST.md`, `REVIEW_PACKAGE_CHANGES.md`, and saved CI metadata and verification output for offline review.
+## Archived v0.1.0 review package
+
+The v0.1.0 review ZIP preserved artifact `14528472864` from run `44523796632`, previously reviewed in PR #1. That source revision and manifest differ from the subsequently published release assets. [Historical review evidence](docs/RELEASE_EVIDENCE.md#archived-v010-review-evidence) · [Merged PR #1](https://github.com/soroushneyestani/developer-cli-toolkit/pull/1)

@@ -1,0 +1,198 @@
+{
+  "source_commit": "541aff83f8675b5d6aac9c98a28adcc1228fb052",
+  "branch": "codex/a02-streaming",
+  "mode": "candidate",
+  "repository_visibility": "private",
+  "pull_request": {
+    "baseRefName": "main",
+    "headRefName": "codex/a02-streaming",
+    "headRefOid": "541aff83f8675b5d6aac9c98a28adcc1228fb052",
+    "isDraft": true,
+    "number": 2,
+    "url": "https://github.com/soroushneyestani/developer-cli-toolkit/pull/2"
+  },
+  "released_main": "02472793619d8a644634068759ecb2e826a39797",
+  "published_releases": [
+    "v0.1.0"
+  ],
+  "run": {
+    "id": 44540116482,
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "541aff83f8675b5d6aac9c98a28adcc1228fb052",
+    "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482",
+    "run_started_at": "2026-11-19T14:06:04Z",
+    "updated_at": "2026-11-19T14:08:28Z"
+  },
+  "jobs": [
+    {
+      "name": "Native verification (ubuntu-24.04)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482/job/135615855694"
+    },
+    {
+      "name": "Native verification (macos-15)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482/job/135615856291"
+    },
+    {
+      "name": "Native verification (windows-2025)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482/job/135615856345"
+    },
+    {
+      "name": "Package binaries",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482/job/135616514302"
+    }
+  ],
+  "runs_for_commit": [
+    {
+      "id": 44540134558,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "541aff83f8675b5d6aac9c98a28adcc1228fb052",
+      "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540134558",
+      "run_started_at": "2026-11-19T14:06:10Z",
+      "updated_at": "2026-11-19T14:08:32Z"
+    },
+    {
+      "id": 44540116482,
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "541aff83f8675b5d6aac9c98a28adcc1228fb052",
+      "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482",
+      "run_started_at": "2026-11-19T14:06:04Z",
+      "updated_at": "2026-11-19T14:08:28Z"
+    }
+  ],
+  "draft_pr_jobs": [
+    {
+      "name": "Native verification (macos-15)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540134558/job/135615918254"
+    },
+    {
+      "name": "Native verification (ubuntu-24.04)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540134558/job/135615918930"
+    },
+    {
+      "name": "Native verification (windows-2025)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540134558/job/135615919135"
+    },
+    {
+      "name": "Package binaries",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540134558/job/135616762142"
+    }
+  ],
+  "artifact": {
+    "id": 14537687323,
+    "name": "dct-packages",
+    "digest": "sha256:53afa2a5d787f023210e39a127d4bc2da12c86913efec3909bc7b80b798d6677",
+    "size_in_bytes": 9474410,
+    "expires_at": "2026-11-26T14:08:24Z"
+  },
+  "selected_log_lines": [
+    "Native verification (ubuntu-24.04)\tVerify native CLI\t2026-11-19T14:06:34.0073360Z     --- PASS: TestSearchCLI/UTF-8_across_read_boundaries_and_final_carriage_return (0.01s)",
+    "Native verification (ubuntu-24.04)\tVerify native CLI\t2026-11-19T14:06:34.0095667Z     --- PASS: TestSearchCLI/late_invalid_bytes_discard_staged_matches (0.02s)",
+    "Native verification (ubuntu-24.04)\tVerify native CLI\t2026-11-19T14:06:34.0129052Z     --- PASS: TestSearchCLI/high-output_file_replays_records_in_order (0.03s)",
+    "Native verification (ubuntu-24.04)\tVerify native CLI\t2026-11-19T14:06:34.0189131Z --- PASS: TestCollectMatchesReturnsLateSourceReadErrors (0.00s)",
+    "Native verification (ubuntu-24.04)\tVerify native CLI\t2026-11-19T14:06:34.0215885Z --- PASS: TestCollectMatchesDefersStagingErrorUntilValidatedEOF (0.00s)",
+    "Native verification (ubuntu-24.04)\tVerify native CLI\t2026-11-19T14:06:34.0260818Z --- PASS: TestLongLineStagingRejectsChangedBytes (0.00s)",
+    "Native verification (ubuntu-24.04)\tVerify native CLI\t2026-11-19T14:06:34.0269094Z     --- PASS: TestLongLineStagingRejectsChangedBytes/memory (0.00s)",
+    "Native verification (ubuntu-24.04)\tVerify native CLI\t2026-11-19T14:06:34.0283694Z     --- PASS: TestLongLineStagingRejectsChangedBytes/spill (0.00s)",
+    "Native verification (ubuntu-24.04)\tVerify native CLI\t2026-11-19T14:06:34.0312092Z --- PASS: TestLongUnmatchedLineDoesNotStage (0.00s)",
+    "Native verification (ubuntu-24.04)\tVerify native CLI\t2026-11-19T14:06:34.0328319Z --- PASS: TestLongLiteralCrossesSeveralFragments (0.00s)",
+    "Native verification (ubuntu-24.04)\tVerify native CLI\t2026-11-19T14:06:34.0332582Z --- PASS: TestSearchFilesRemovesSpill (0.01s)",
+    "Native verification (ubuntu-24.04)\tVerify native CLI\t2026-11-19T14:06:34.0333547Z     --- PASS: TestSearchFilesRemovesSpill/valid_file (0.00s)",
+    "Native verification (ubuntu-24.04)\tVerify native CLI\t2026-11-19T14:06:34.0334575Z     --- PASS: TestSearchFilesRemovesSpill/invalid_file (0.00s)",
+    "Native verification (ubuntu-24.04)\tVerify native CLI\t2026-11-19T14:06:34.0335619Z     --- PASS: TestSearchFilesRemovesSpill/output_error (0.00s)",
+    "Native verification (ubuntu-24.04)\tVerify native CLI\t2026-11-19T14:06:35.4497769Z Formatting, module integrity, vet, tests, and native build passed.",
+    "Native verification (ubuntu-24.04)\tScan Go dependencies\t2026-11-19T14:06:38.1782965Z No vulnerabilities found.",
+    "Native verification (ubuntu-24.04)\tScan Git history for secrets\t2026-11-19T14:06:38.7313820Z 2:06PM INF no leaks found",
+    "Native verification (macos-15)\tVerify native CLI\t2026-11-19T14:06:16.4325020Z     --- PASS: TestSearchCLI/UTF-8_across_read_boundaries_and_final_carriage_return (0.01s)",
+    "Native verification (macos-15)\tVerify native CLI\t2026-11-19T14:06:16.4325970Z     --- PASS: TestSearchCLI/late_invalid_bytes_discard_staged_matches (0.04s)",
+    "Native verification (macos-15)\tVerify native CLI\t2026-11-19T14:06:16.4326460Z     --- PASS: TestSearchCLI/high-output_file_replays_records_in_order (0.02s)",
+    "Native verification (macos-15)\tVerify native CLI\t2026-11-19T14:06:16.4331710Z --- PASS: TestCollectMatchesReturnsLateSourceReadErrors (0.00s)",
+    "Native verification (macos-15)\tVerify native CLI\t2026-11-19T14:06:16.4332440Z --- PASS: TestCollectMatchesDefersStagingErrorUntilValidatedEOF (0.00s)",
+    "Native verification (macos-15)\tVerify native CLI\t2026-11-19T14:06:16.4352030Z --- PASS: TestLongLineStagingRejectsChangedBytes (0.00s)",
+    "Native verification (macos-15)\tVerify native CLI\t2026-11-19T14:06:16.4352550Z     --- PASS: TestLongLineStagingRejectsChangedBytes/memory (0.00s)",
+    "Native verification (macos-15)\tVerify native CLI\t2026-11-19T14:06:16.4354110Z     --- PASS: TestLongLineStagingRejectsChangedBytes/spill (0.00s)",
+    "Native verification (macos-15)\tVerify native CLI\t2026-11-19T14:06:16.4359480Z --- PASS: TestLongUnmatchedLineDoesNotStage (0.00s)",
+    "Native verification (macos-15)\tVerify native CLI\t2026-11-19T14:06:16.4360970Z --- PASS: TestLongLiteralCrossesSeveralFragments (0.00s)",
+    "Native verification (macos-15)\tVerify native CLI\t2026-11-19T14:06:16.4432590Z --- PASS: TestSearchFilesRemovesSpill (0.01s)",
+    "Native verification (macos-15)\tVerify native CLI\t2026-11-19T14:06:16.4433470Z     --- PASS: TestSearchFilesRemovesSpill/valid_file (0.00s)",
+    "Native verification (macos-15)\tVerify native CLI\t2026-11-19T14:06:16.4434310Z     --- PASS: TestSearchFilesRemovesSpill/invalid_file (0.00s)",
+    "Native verification (macos-15)\tVerify native CLI\t2026-11-19T14:06:16.4435160Z     --- PASS: TestSearchFilesRemovesSpill/output_error (0.00s)",
+    "Native verification (macos-15)\tVerify native CLI\t2026-11-19T14:06:17.3038040Z Formatting, module integrity, vet, tests, and native build passed.",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:06:58.1227144Z     --- SKIP: TestInspectAndOptionsCLI/inspect_JSON_escapes_filename_delimiters (0.00s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:06:59.2771059Z     --- PASS: TestSearchCLI/UTF-8_across_read_boundaries_and_final_carriage_return (0.03s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:06:59.2772657Z     --- PASS: TestSearchCLI/late_invalid_bytes_discard_staged_matches (0.05s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:06:59.2773484Z     --- PASS: TestSearchCLI/high-output_file_replays_records_in_order (0.03s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:06:59.2781986Z     --- SKIP: TestSearchCLI/unreadable_file_is_an_error (0.00s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:07:00.1724366Z --- PASS: TestSearchReportsWindowsSharingViolation (0.80s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:07:00.1725621Z --- PASS: TestCollectMatchesReturnsLateSourceReadErrors (0.00s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:07:00.1727073Z --- PASS: TestCollectMatchesDefersStagingErrorUntilValidatedEOF (0.00s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:07:00.1729116Z --- PASS: TestLongLineStagingRejectsChangedBytes (0.00s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:07:00.1729726Z     --- PASS: TestLongLineStagingRejectsChangedBytes/memory (0.00s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:07:00.1731675Z     --- PASS: TestLongLineStagingRejectsChangedBytes/spill (0.00s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:07:00.1732801Z --- PASS: TestLongUnmatchedLineDoesNotStage (0.00s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:07:00.1733732Z --- PASS: TestLongLiteralCrossesSeveralFragments (0.00s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:07:00.1735861Z --- PASS: TestSearchFilesRemovesSpill (0.01s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:07:00.1736379Z     --- PASS: TestSearchFilesRemovesSpill/valid_file (0.00s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:07:00.1736957Z     --- PASS: TestSearchFilesRemovesSpill/invalid_file (0.00s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:07:00.1737540Z     --- PASS: TestSearchFilesRemovesSpill/output_error (0.00s)",
+    "Native verification (windows-2025)\tVerify native CLI\t2026-11-19T14:07:03.5634358Z Formatting, module integrity, vet, tests, and native build passed."
+  ],
+  "retained_package": {
+    "retained_under": "dist/hosted-44540116482",
+    "manifest_sha256": "f770371ec7a65240881ffa898745426bbbc42765ebe64e3151ecd6e63066d45a",
+    "packages": {
+      "dct-linux-amd64.zip": {
+        "sha256": "e105c75b1769d7656d85011cdf9bd2ee33c0bab0cbef3cfbf411a2c30a35faad",
+        "bytes": 3181590,
+        "executable_sha256": "b872fc6b56326fd4367c1beb426f050c5c8c4a2cde0e553e11acbf43220c08ff"
+      },
+      "dct-windows-amd64.zip": {
+        "sha256": "a62da09e8797b5a163b3d9c1120386c0e9f4b4681b73d10c14e742ebfe20d5e0",
+        "bytes": 3256568,
+        "executable_sha256": "c11ecb7fef161c1ae0933a8dff5da2862bd8dd55cd7b365852cda61b27dce56b"
+      },
+      "dct-darwin-arm64.zip": {
+        "sha256": "f6a35da05264460d60f80659efa8c18512508db328fb826d26eb7512c1ec1037",
+        "bytes": 3043552,
+        "executable_sha256": "7f869b787bf4ab5c9a7adebe195c1400ef21c3812660ff8dc780f0278f58aceb"
+      }
+    },
+    "windows_smoke": {
+      "platform": "Windows amd64",
+      "version": "0.1.1-rc.1",
+      "ordered_records": 5002,
+      "stdout_sha256": "860ad4aaf1f67955160179a14d6d30ceeafe472de1db891193e74d946fdc5cef",
+      "cases": [
+        "dense spill",
+        "late NUL and truncated UTF-8 suppress all records",
+        "UTF-8 on reader boundary",
+        "CRLF and final CR",
+        "exits 0, 1, and 2",
+        "temporary file cleanup"
+      ]
+    },
+    "windows_benchmark_binary_sha256": "c11ecb7fef161c1ae0933a8dff5da2862bd8dd55cd7b365852cda61b27dce56b",
+    "windows_binary_matches_benchmark": true
+  }
+}

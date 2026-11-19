@@ -1,6 +1,17 @@
 # Changelog
 
-## 0.1.0 — Release candidate
+## 0.1.1 — Streaming search
+
+- Process files in a reusable read buffer while preserving the literal CLI contract.
+- Stage matches per file and spill large result sets to temporary storage. Emit results only after complete UTF-8 and NUL checks.
+- Scan oversized lines in fragments. When staging an oversized match, reread its range from the same open file and verify the copied bytes against the scan's SHA-256.
+- Cover boundary-spanning literals, long lines, late invalid bytes, read errors, and spill cleanup with regression tests.
+- Record elapsed time and peak process memory for the streaming candidate against `v0.1.0` on five reproducible Windows workloads. The benchmark report describes the measured inputs and the long-line tradeoffs. [Benchmark results](docs/BENCHMARKS.md)
+- License the original project material under MIT and include the project license, third-party notices and dependency license texts in the binary archives.
+
+Download Windows amd64, Linux amd64 and macOS arm64 packages, `SHA256SUMS.txt`, and source archives from the release page. [v0.1.1 release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.1) · [Release evidence](docs/RELEASE_EVIDENCE.md)
+
+## 0.1.0 — Initial release
 
 - Search UTF-8 text recursively for a case-sensitive literal.
 - Inspect regular files and report their relative paths and byte sizes.

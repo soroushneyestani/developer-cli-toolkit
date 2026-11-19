@@ -27,15 +27,11 @@ $staging = Join-Path $dist ".staging-$runId"
 $destination = Join-Path $dist "dct-$runId"
 $checksumsName = 'SHA256SUMS.txt'
 
-$requiredNotices = @('THIRD_PARTY_NOTICES.md', 'licenses')
+$requiredNotices = @('LICENSE', 'THIRD_PARTY_NOTICES.md', 'licenses', 'CHANGELOG.md')
 $notices = @($requiredNotices | ForEach-Object {
     $source = Join-Path $projectRoot $_
     if (-not (Test-Path -LiteralPath $source)) { throw "Required package content is missing: $_" }
     $source
-})
-$notices += @('CHANGELOG.md', 'LICENSE' | ForEach-Object {
-    $source = Join-Path $projectRoot $_
-    if (Test-Path -LiteralPath $source -PathType Leaf) { $source }
 })
 
 $savedEnvironment = @{}

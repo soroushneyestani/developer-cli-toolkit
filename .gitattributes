@@ -1,1 +1,2 @@
 *.go text eol=lf
+docs/releases/*-SHA256SUMS.txt text eol=lf

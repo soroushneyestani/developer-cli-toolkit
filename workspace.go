@@ -1,14 +1,12 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
 	"io/fs"
 	"os"
 	"path/filepath"
 	"slices"
 	"strings"
-	"unicode/utf8"
 )
 
 func openDirectory(path string) (*os.Root, error) {
@@ -59,40 +57,6 @@ func listFiles(root *os.Root, extensions []string) ([]string, error) {
 	// Traversal order can differ from the order of complete slash-separated paths.
 	slices.Sort(files)
 	return files, nil
-}
-
-type searchMatch struct {
-	Path string `json:"path"`
-	Line int    `json:"line"`
-	Text string `json:"text"`
-}
-
-func searchFiles(root *os.Root, files []string, literal []byte, emit func(searchMatch) error) (bool, error) {
-	found := false
-	for _, file := range files {
-		contents, err := root.ReadFile(file)
-		if err != nil {
-			return found, err
-		}
-		// Validate the whole file before emitting any matches from it.
-		if bytes.IndexByte(contents, 0) >= 0 || !utf8.Valid(contents) {
-			continue
-		}
-		for lineNumber := 1; len(contents) > 0; lineNumber++ {
-			line, rest, terminated := bytes.Cut(contents, []byte{'\n'})
-			contents = rest
-			if terminated {
-				line = bytes.TrimSuffix(line, []byte{'\r'})
-			}
-			if bytes.Contains(line, literal) {
-				if err := emit(searchMatch{Path: file, Line: lineNumber, Text: string(line)}); err != nil {
-					return found, fmt.Errorf("write search result: %w", err)
-				}
-				found = true
-			}
-		}
-	}
-	return found, nil
 }
 
 type fileSize struct {

@@ -12,6 +12,17 @@
 - [x] Check hosted package integrity and execute the packaged Windows smoke fixture.
 - [x] Finish the README, changelog, Persian education, English website and Instagram copy, and release evidence.
 - [x] Reconcile the release evidence with CI run `44523796632`, artifact `14528472864`, and the retained private archive and manifest.
-- [ ] Obtain explicit user acceptance of the A02 release review.
+- [x] Obtain explicit user acceptance of v0.1.0.
+- [x] Merge PR #1 preserving the original commits and verify `main`.
+- [x] Publish v0.1.0 privately with packages built from the tagged `main` commit and verify all uploaded assets.
+- [x] Stream source validation and preserve literal results, ordering, and process exit semantics.
+- [x] Verify oversized lines, temporary match staging, read failures, and cleanup.
+- [x] Compare v0.1.0 and the streaming build using reproducible time and memory measurements.
+- [x] Verify the streaming candidate on native CI and check its exact distribution archive.
+- [x] Review the streaming candidate and verify its contract, regression tests, and benchmark evidence.
+- [x] Prepare the original MIT license, keep dependency licenses and notices, and audit the published surface and Git history.
+- [x] Prepare the source build and release procedure, contribution and security policies, and publication documents.
+- [x] Audit historical Git and GitHub email fields, verify the published assets and tag archives, and configure A02's verified noreply for future commits. [Publication decisions](../FINAL_PUBLICATION_DECISIONS.md)
+- [ ] Obtain explicit final acceptance and resolve the historical disclosure and licensing decisions. [Final publication checklist](../FINAL_PUBLICATION_CHECKLIST.md)
 
-The corrected hosted Windows checkout and the entire native matrix and packaging pipeline passed. The project remains in `release_review`. Tagging `v0.1.0` and creating a private release require explicit user approval. [Release evidence](RELEASE_EVIDENCE.md)
+The project remains in `release_review` for the final engineering acceptance. [Release evidence](RELEASE_EVIDENCE.md)
