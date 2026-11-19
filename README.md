@@ -2,7 +2,7 @@
 
 `dct` searches workspace text for a literal and lists regular files with their byte sizes. Both commands produce sorted, relative paths and can emit newline-delimited JSON (NDJSON) for scripts.
 
-The original Go/Cobra implementation takes inspiration from the recursive search and file filters in [ripgrep](https://github.com/BurntSushi/ripgrep). `dct` includes hidden files, uses case-sensitive literal matching, and applies only explicit suffix filters. Its scope and performance goals are defined by the [v0.1 contract](docs/SPEC.md).
+The original Go/Cobra implementation takes inspiration from recursive search and file filters. `dct` includes hidden files, uses case-sensitive literal matching, and applies explicit suffix filters. [CLI contract](docs/SPEC.md) · [ripgrep reference](https://github.com/BurntSushi/ripgrep)
 
 ## Install v0.1.0
 
@@ -27,6 +27,8 @@ Expand-Archive -LiteralPath dct-windows-amd64.zip -DestinationPath dct-windows
 On Linux, verify with `sha256sum -c SHA256SUMS.txt`. On macOS, use `shasum -a 256 -c SHA256SUMS.txt`. Extract the target ZIP, set its run permission with `chmod +x dct` if needed, and run `./dct --version`. The packaged executable runs without a local Go installation.
 
 ## Build and verify
+
+The engineering review branch builds `0.1.1-rc.1`. Use the private release for the approved `v0.1.0` baseline. [Engineering review](REVIEW_INDEX.md)
 
 Use Go 1.26 or newer. Use Go 1.27.4 to match the verified native CI and packaging toolchain.
 
@@ -83,6 +85,8 @@ The [CI workflow](.github/workflows/ci.yml) runs native integration tests and bu
 
 ## Architecture and limits
 
-`main.go` parses commands with Cobra, renders output and maps errors to exit codes. `workspace.go` scopes filesystem access to the opened directory, sorts relative paths, and checks each search file before matching its lines. Memory usage grows with the number of selected paths and the size of the largest searched file. Results describe a live filesystem, so keep the tree stable for reproducible output. On Unix, filenames with invalid UTF-8 bytes are represented with replacement characters in JSON. Search takes its literal and root from command arguments. Regex matching, stdin search, ignore-file rules and numeric performance targets are outside the 0.1.0 contract.
+`main.go` parses commands with Cobra, renders output and maps errors to exit codes. `workspace.go` scopes filesystem access to the opened directory and sorts relative paths. The search engine reads files in chunks and stages results until each file reaches a clean, valid EOF. Oversized nonmatching lines are scanned without accumulating their text. When staging an oversized match, the engine rereads its range from the same open file and verifies the bytes by SHA-256. Dense match sets can use temporary disk. Memory still grows with the selected paths and the size of a matching record during output. [Streaming design](docs/adr/0003-streaming-search.md) · [Measured benchmark cases](docs/BENCHMARKS.md)
+
+Results describe a live filesystem, so keep the tree stable for reproducible output. On Unix, filenames with invalid UTF-8 bytes are represented with replacement characters in JSON. Search takes its literal and root from command arguments. Regex matching, stdin search, and ignore-file rules are outside the CLI contract.
 
 See the [Persian tutorial](docs/LEARNING_FA.md), [technical article](docs/WEBSITE_EN.md), [design decisions](docs/adr/), [test evidence](docs/EVIDENCE.md), and [third-party notices](THIRD_PARTY_NOTICES.md).

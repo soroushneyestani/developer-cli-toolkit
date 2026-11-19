@@ -1,6 +1,14 @@
 # Changelog
 
-## 0.1.0 — Release candidate
+## 0.1.1-rc.1 — Streaming search review
+
+- Process files in a reusable read buffer while preserving the literal CLI contract.
+- Stage matches per file and spill large result sets to temporary storage. Emit results only after complete UTF-8 and NUL checks.
+- Scan oversized lines in fragments. When staging an oversized match, reread its range from the same open file and verify the copied bytes against the scan's SHA-256.
+- Cover boundary-spanning literals, long lines, late invalid bytes, read errors, and spill cleanup with regression tests.
+- Measure search time and peak process memory against the private v0.1.0 release using reproducible synthetic workloads. Results and tradeoffs are recorded in `docs/BENCHMARKS.md` in the source repository.
+
+## 0.1.0 — Private release
 
 - Search UTF-8 text recursively for a case-sensitive literal.
 - Inspect regular files and report their relative paths and byte sizes.

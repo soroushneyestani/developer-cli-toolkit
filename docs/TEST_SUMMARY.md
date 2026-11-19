@@ -1,5 +1,7 @@
 # A02 v0.1.0 test summary
 
+The v0.1.0 review measurements and artifact references below describe the archived pre-merge evidence. The later approved main build has its own run and published asset checksums. [Published v0.1.0 evidence](releases/v0.1.0.md)
+
 The binary candidate was built and verified at `1d41dcc0184a7fad5e09e1e7c9ee6cefc37dd930` on `codex/a02`. All three native verification jobs and the subsequent packaging job passed. The candidate is pinned to this run and artifact for release review. [Private candidate CI run 44523796632](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44523796632) · [Private artifact 14528472864](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44523796632/artifacts/14528472864)
 
 ## Native verification
