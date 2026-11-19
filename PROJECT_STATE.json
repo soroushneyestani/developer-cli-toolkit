@@ -1,5 +1,5 @@
 {
-  "next_action": "Verify the authorized v0.1.1 main build and public release, then await final owner review",
+  "next_action": "Await explicit final A02 acceptance",
   "status": "release_review",
   "blocker": null,
   "evidence": "docs/RELEASE_EVIDENCE.md",
@@ -7,21 +7,13 @@
     "checklist": "FINAL_PUBLICATION_CHECKLIST.md",
     "decisions_report": "FINAL_PUBLICATION_DECISIONS.md",
     "license_preference": "MIT",
-    "visibility": "private",
-    "draft_pr": 2,
+    "visibility": "public",
+    "draft_pr": null,
     "pending_owner_decisions": [],
     "approved_visibility": "public",
-    "approved_destination": "soroushneyestani/developer-cli-toolkit"
+    "approved_destination": "soroushneyestani/developer-cli-toolkit",
+    "merged_release_pr": 2
   },
-  "latest_private_release": {
-    "tag": "v0.1.0",
-    "source_commit": "02472793619d8a644634068759ecb2e826a39797",
-    "ci_run": 44536777289,
-    "source_artifact": 14536722607,
-    "url": "https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0",
-    "manifest": "docs/releases/v0.1.0-SHA256SUMS.txt"
-  },
-  "candidate_version": "0.1.1-rc.1",
   "reviewed_v0_1_0_candidate": {
     "implementation_commit": "482ebacf9d2dcc940c1e6931652b49610dee797a",
     "source_commit": "1d41dcc0184a7fad5e09e1e7c9ee6cefc37dd930",
@@ -40,5 +32,25 @@
     "manifest": "docs/releases/v0.1.1-rc.1-SHA256SUMS.txt",
     "draft_pr": 2
   },
-  "planned_stable_version": "0.1.1"
+  "historical_release_v0_1_0": {
+    "tag": "v0.1.0",
+    "source_commit": "02472793619d8a644634068759ecb2e826a39797",
+    "ci_run": 44536777289,
+    "source_artifact": 14536722607,
+    "url": "https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0",
+    "manifest": "docs/releases/v0.1.0-SHA256SUMS.txt",
+    "original_visibility": "private",
+    "mit_grant": "docs/releases/v0.1.0-MIT.md"
+  },
+  "archived_candidate_version": "0.1.1-rc.1",
+  "published_release": {
+    "tag": "v0.1.1",
+    "source_commit": "2623811347200ff5433332479ac0e2b75e3fb958",
+    "ci_run": 44582995235,
+    "source_artifact": 14559337068,
+    "url": "https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.1",
+    "manifest": "docs/releases/v0.1.1-SHA256SUMS.txt",
+    "public": true,
+    "main_protection_verified": true
+  }
 }

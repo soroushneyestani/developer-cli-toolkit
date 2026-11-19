@@ -1,0 +1,222 @@
+{
+  "release": {
+    "tag": "v0.1.1",
+    "source": "2623811347200ff5433332479ac0e2b75e3fb958",
+    "url": "https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.1",
+    "id": 451725885,
+    "assets": {
+      "dct-darwin-arm64.zip": {
+        "id": 768710149,
+        "url": "https://github.com/soroushneyestani/developer-cli-toolkit/releases/download/v0.1.1/dct-darwin-arm64.zip",
+        "sha256": "3c365f7740a3e863bdd7ac3b986c3f5e22fa74747a5e4bc9357df2c590e55915",
+        "bytes": 3044687
+      },
+      "dct-linux-amd64.zip": {
+        "id": 768710151,
+        "url": "https://github.com/soroushneyestani/developer-cli-toolkit/releases/download/v0.1.1/dct-linux-amd64.zip",
+        "sha256": "71f7a68b2975973db6da54eab11c10d40dbaef6eedf1b8f13f014028e91d1db5",
+        "bytes": 3182686
+      },
+      "dct-windows-amd64.zip": {
+        "id": 768710164,
+        "url": "https://github.com/soroushneyestani/developer-cli-toolkit/releases/download/v0.1.1/dct-windows-amd64.zip",
+        "sha256": "d49602af59b78aacf8b794df74b0a995654ef3a6b5adea4b60d21ebf5dad355a",
+        "bytes": 3257673
+      },
+      "RELEASE_NOTES.md": {
+        "id": 768710152,
+        "url": "https://github.com/soroushneyestani/developer-cli-toolkit/releases/download/v0.1.1/RELEASE_NOTES.md",
+        "sha256": "abfd64f8ac62556b440d4b47950152b2197035b72f230b51cb2f789f8d95bce8",
+        "bytes": 2064
+      },
+      "SHA256SUMS.txt": {
+        "id": 768710157,
+        "url": "https://github.com/soroushneyestani/developer-cli-toolkit/releases/download/v0.1.1/SHA256SUMS.txt",
+        "sha256": "ade6ae8d0d4488cfe4109e26c28e555c7a81c121cbc8d8e71e566d64032e7605",
+        "bytes": 261
+      }
+    },
+    "source_archives": {
+      "zipball": {
+        "files_verified": 51,
+        "url": "https://api.github.com/repos/soroushneyestani/developer-cli-toolkit/zipball/v0.1.1"
+      },
+      "tarball": {
+        "files_verified": 51,
+        "url": "https://api.github.com/repos/soroushneyestani/developer-cli-toolkit/tarball/v0.1.1"
+      }
+    },
+    "main_ci": {
+      "id": 44582995235,
+      "event": "push",
+      "head_sha": "2623811347200ff5433332479ac0e2b75e3fb958",
+      "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44582995235",
+      "conclusion": "success",
+      "status": "completed",
+      "jobs": [
+        {
+          "name": "Native verification (macos-15)",
+          "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44582995235/job/135768367899",
+          "conclusion": "success"
+        },
+        {
+          "name": "Native verification (ubuntu-24.04)",
+          "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44582995235/job/135768368552",
+          "conclusion": "success"
+        },
+        {
+          "name": "Native verification (windows-2025)",
+          "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44582995235/job/135768368798",
+          "conclusion": "success"
+        },
+        {
+          "name": "Package binaries",
+          "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44582995235/job/135768799296",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "status": "public latest stable",
+    "historical_release": {
+      "id": 451409401,
+      "url": "https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0",
+      "grant_verified": true
+    }
+  },
+  "merge": {
+    "source": "2623811347200ff5433332479ac0e2b75e3fb958",
+    "parents": [
+      "02472793619d8a644634068759ecb2e826a39797",
+      "bc2b9f794f128d53047b08cedb5c243ebb08bd47"
+    ],
+    "pr": 2,
+    "tree": "24067e4f65817f7306b6cc8e52402588092889dd",
+    "review_ci": {
+      "pull_request": {
+        "id": 44582579948,
+        "event": "pull_request",
+        "head_sha": "bc2b9f794f128d53047b08cedb5c243ebb08bd47",
+        "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44582579948",
+        "conclusion": "success",
+        "status": "completed",
+        "jobs": [
+          {
+            "name": "Native verification (ubuntu-24.04)",
+            "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44582579948/job/135766863457",
+            "conclusion": "success"
+          },
+          {
+            "name": "Native verification (macos-15)",
+            "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44582579948/job/135766863815",
+            "conclusion": "success"
+          },
+          {
+            "name": "Native verification (windows-2025)",
+            "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44582579948/job/135766863826",
+            "conclusion": "success"
+          },
+          {
+            "name": "Package binaries",
+            "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44582579948/job/135767507479",
+            "conclusion": "success"
+          }
+        ]
+      },
+      "push": {
+        "id": 44582569589,
+        "event": "push",
+        "head_sha": "bc2b9f794f128d53047b08cedb5c243ebb08bd47",
+        "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44582569589",
+        "conclusion": "success",
+        "status": "completed",
+        "jobs": [
+          {
+            "name": "Native verification (macos-15)",
+            "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44582569589/job/135766828343",
+            "conclusion": "success"
+          },
+          {
+            "name": "Native verification (windows-2025)",
+            "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44582569589/job/135766828710",
+            "conclusion": "success"
+          },
+          {
+            "name": "Native verification (ubuntu-24.04)",
+            "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44582569589/job/135766828810",
+            "conclusion": "success"
+          },
+          {
+            "name": "Package binaries",
+            "html_url": "https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44582569589/job/135767455665",
+            "conclusion": "success"
+          }
+        ]
+      }
+    },
+    "review_logs": [
+      {
+        "id": 44582579948,
+        "state": "screened",
+        "indications": {
+          "documented_hosted_windows_profile_path": 36
+        }
+      },
+      {
+        "id": 44582569589,
+        "state": "screened",
+        "indications": {
+          "documented_hosted_windows_profile_path": 36
+        }
+      }
+    ]
+  },
+  "publication": {
+    "id": 1462770171,
+    "url": "https://github.com/soroushneyestani/developer-cli-toolkit",
+    "source": "2623811347200ff5433332479ac0e2b75e3fb958",
+    "license": "MIT",
+    "readme_rendered": true,
+    "anonymous_source_and_ci": true,
+    "anonymous_git_ls_remote": true,
+    "description": "Cross-platform CLI toolkit written in Go for recursive file search, workspace inspection, extension filtering, and NDJSON output.",
+    "topics": [
+      "cli",
+      "command-line",
+      "cross-platform",
+      "developer-tools",
+      "file-inspection",
+      "file-search",
+      "go",
+      "golang",
+      "ndjson",
+      "open-source"
+    ],
+    "homepage": "https://soroush.neyestani.com/"
+  },
+  "settings": {
+    "source": "2623811347200ff5433332479ac0e2b75e3fb958",
+    "checks": [
+      {
+        "context": "Native verification (macos-15)",
+        "app_id": 15368
+      },
+      {
+        "context": "Native verification (ubuntu-24.04)",
+        "app_id": 15368
+      },
+      {
+        "context": "Native verification (windows-2025)",
+        "app_id": 15368
+      },
+      {
+        "context": "Package binaries",
+        "app_id": 15368
+      }
+    ],
+    "enabled": true,
+    "private_reporting": true,
+    "manual": []
+  },
+  "full_ancestry_count_at_release": 19,
+  "prepublication_log_archives_screened": 21
+}

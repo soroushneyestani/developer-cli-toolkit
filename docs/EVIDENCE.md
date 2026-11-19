@@ -82,3 +82,7 @@ Human action: install Go with go and gofmt on PATH, reopen the shell and confirm
 - Rechecked the native Windows verifier with Go 1.27.4. Seventy-two additional seeded comparisons against the released binary preserved stdout, stderr and exit status across short and oversized lines, invalid bytes, and dense output.
 - Confirmed the 50 recorded benchmark samples and both benchmark executable digests. The three local preparation ZIPs retained the previously reviewed runtime bytes and passed CRC, SHA-256, release-material and machine-header checks after adding required license packaging. [Benchmark evidence](BENCHMARKS.md) · [Release procedure](releases/OPEN_SOURCE_RELEASE.md)
 - Compared the historical Git refs with the private remote, verified the dependency notices, and screened the existing history and hosted records. The owner's decisions about rights, historical Git author metadata and the older release remain open. [Publication checklist](../FINAL_PUBLICATION_CHECKLIST.md)
+
+## 2026-11-19 — Public stable v0.1.1
+
+- The tagged main commit `2623811347200ff5433332479ac0e2b75e3fb958` passed all four checks in run `44582995235`. Verified platform, license, CRC and SHA-256 checks for the three binary archives and confirmed both public source archives against their exact tag tree. [Public release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.1) · [Stable build evidence](releases/v0.1.1.md)
