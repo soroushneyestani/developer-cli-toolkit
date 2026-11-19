@@ -1,6 +1,6 @@
 # A02 final publication checklist
 
-Developer CLI Toolkit is in `release_review`. The owner authorized public release of `v0.1.1` in this repository. The historical baseline is `v0.1.0`. [PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2) · [CI checks](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2/checks)
+Developer CLI Toolkit is `completed` after the owner accepted public `v0.1.1`. The owner authorized public release of `v0.1.1` in this repository. The historical baseline is `v0.1.0`. [PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2) · [CI checks](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2/checks)
 
 The final decisions report records the verified address categories, publication paths, and historical asset treatment. [Final publication decisions](FINAL_PUBLICATION_DECISIONS.md)
 
@@ -47,4 +47,4 @@ The owner approved disclosure and MIT for eligible original material. The public
 ## Final review
 
 - [x] Public stable release and exact build verified. [Release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.1) · [Evidence](docs/releases/v0.1.1.md)
-- [ ] Obtain the owner’s final A02 acceptance. Project state remains `release_review`.
+- [x] Obtain the owner’s final A02 acceptance and verify the exact post-PR #3 main commit, including macOS and packaging. [Completion record](docs/COMPLETION.md)

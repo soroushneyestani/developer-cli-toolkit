@@ -4,9 +4,13 @@
 
 The stable version uses streaming search with the reviewed literal-search and inspection contract. The public release supplies Windows amd64, Linux amd64 and macOS arm64 packages and tagged source archives. Its SHA-256 manifest applies to that exact package set. The stable tag resolves to `2623811347200ff5433332479ac0e2b75e3fb958`. Exact main CI run `44582995235` passed and produced artifact `14559337068`. The checked-in proof records anonymous verification of five assets and both source archives. Older RC and historical records below retain their own provenance. [Stable provenance](releases/v0.1.1.md) · [Stable SHA-256 manifest](releases/v0.1.1-SHA256SUMS.txt) [Stable release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.1) · [Changelog](../CHANGELOG.md)
 
+## Final closure
+
+The owner accepted public `v0.1.1` on 2026-11-19. The final documentation PR #3 merge at `3c4c10adca36efc47c56aabed72b4ef7f7835b8f` passed macOS, Linux, Windows and packaging in run `44587543545`. The public binaries, checksums, source archives, MIT license, and documentation were checked again for closure. [Completion record](COMPLETION.md) · [Post-merge CI](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44587543545)
+
 ## Open-source preparation
 
-Draft PR #2 adds the project MIT license, retains the existing dependency licenses, and requires them in new binary packages. The review added no stream-runtime change. All three local preparation archives passed CRC, checksum, license and machine-header checks and contained executables identical to the pinned RC. The PR's preparation summary records the exact hosted asset and test runs. [Publication checklist](../FINAL_PUBLICATION_CHECKLIST.md) · [Release procedure](releases/OPEN_SOURCE_RELEASE.md) · [Draft PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2)
+PR #2 added the project MIT license, retained the existing dependency licenses, and required them in new binary packages. All three local preparation archives passed CRC, checksum, license and machine-header checks and contained executables identical to the pinned RC. The PR's preparation summary records the exact hosted asset and test runs. [Publication checklist](../FINAL_PUBLICATION_CHECKLIST.md) · [Release procedure](releases/OPEN_SOURCE_RELEASE.md) · [Merged PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2)
 
 ## 0.1.1-rc.1 engineering candidate
 
@@ -17,8 +21,6 @@ The authenticated download's outer ZIP is 9,474,410 bytes with SHA-256 `53afa2a5
 The packaged Windows binary passed a direct smoke test with 5,002 ordered NDJSON records, dense temporary staging, late NUL and truncated UTF-8 suppression, boundary-spanning Unicode, CRLF and final CR, exits 0 through 2, and temporary-file cleanup. The packaged Windows executable matches the benchmarked candidate binary byte for byte. Linux and macOS native CI executed the CLI built on each runner. Distribution packages for those two targets were inspected for integrity and build settings. [Test summary](TEST_SUMMARY.md)
 
 The benchmark compares the released v0.1.0 binary with an exact streaming checkpoint build. It verifies output equivalence and measures time and peak working set on generated Windows workloads. This candidate keeps the ordinary validation buffers bounded and still materializes each complete matching line for output. Dense output can require space in the temporary directory. [Benchmark results](BENCHMARKS.md) · [Streaming ADR](adr/0003-streaming-search.md)
-
-A02 remains in `release_review` awaiting explicit final engineering acceptance.
 
 ## Approved v0.1.0 release
 

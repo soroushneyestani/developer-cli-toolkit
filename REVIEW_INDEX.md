@@ -1,17 +1,17 @@
 # A02 Developer CLI Toolkit engineering review
 
-A02 is in `release_review` for `v0.1.1`. The historical `v0.1.0` release is the baseline. [Historical v0.1.0 release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0) · [Published asset provenance](docs/releases/v0.1.0.md)
+A02 is `completed` with public `v0.1.1`. The historical `v0.1.0` release is the benchmark baseline. [Completion record](docs/COMPLETION.md) · [Historical v0.1.0 release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0) · [Published asset provenance](docs/releases/v0.1.0.md)
 
-PR #2 carries the open-source release preparation. The checklist tracks release verification, and the release procedure records how the full source and packages are published. [Final publication checklist](FINAL_PUBLICATION_CHECKLIST.md) · [Release procedure](docs/releases/OPEN_SOURCE_RELEASE.md) · [PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2)
+PR #2 merged the open-source release preparation. The checklist records release verification, and the release procedure explains how to publish the source and packages. [Final publication checklist](FINAL_PUBLICATION_CHECKLIST.md) · [Release procedure](docs/releases/OPEN_SOURCE_RELEASE.md) · [PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2)
 
 The public stable release, exact CI, source and verified assets are recorded separately. [v0.1.1 release evidence](docs/releases/v0.1.1.md) [Final publication decisions](FINAL_PUBLICATION_DECISIONS.md)
 
 ## Documentation
 
 - [README](README.md) covers setup, installation, and command examples.
-- [Changelog](CHANGELOG.md) describes both the released baseline and the streaming candidate.
-- [Persian learning guide](docs/LEARNING_FA.md), [English portfolio article](docs/WEBSITE_EN.md), and [English Instagram copy](docs/INSTAGRAM_EN.md) are ready for content review.
-- [Project state](PROJECT_STATE.json) records the release review status. [Project tasks](docs/TASKS.md) record the outstanding approval.
+- [Changelog](CHANGELOG.md) covers the v0.1.0 baseline, the streaming candidate, and stable v0.1.1.
+- [Persian learning guide](docs/LEARNING_FA.md), [English portfolio article](docs/WEBSITE_EN.md), and [English Instagram copy](docs/INSTAGRAM_EN.md).
+- [Project state](PROJECT_STATE.json) and [project tasks](docs/TASKS.md) record the accepted closure.
 
 ## Implementation and verification
 
