@@ -53,14 +53,14 @@ pwsh -NoProfile -File scripts/verify.ps1
 
 ## اجرای یک نمونهٔ قابل بازتولید
 
-از ریشهٔ مخزن، پس از ساخت باینری در Windows، یک پوشهٔ مصنوعی تازه بسازید. این نمونه از فایل‌هایی با پایان خط LF و CRLF استفاده می‌کند.
+از ریشهٔ مخزن، پس از ساخت باینری در Windows، یک پوشهٔ مصنوعی تازه بسازید. این نمونه از فایل‌هایی با پایان خط LF و CRLF استفاده می‌کند. نام پوشه با نقطه شروع می‌شود تا فایل نمونهٔ Go وارد اجرای `go list ./...` نشود.
 
 ```powershell
-$demo = Join-Path (Get-Location).Path ('bin/dct-learning-' + [guid]::NewGuid().ToString('N'))
+$demo = Join-Path (Get-Location).Path ('bin/.dct-learning-' + [guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path (Join-Path $demo 'src') -Force | Out-Null
 $utf8 = [Text.UTF8Encoding]::new($false)
 [IO.File]::WriteAllText((Join-Path $demo 'notes.txt'), "TODO: review`n", $utf8)
-[IO.File]::WriteAllText((Join-Path $demo 'src/build.go'), "ready`r`nTODO: TODO`r`n", $utf8)
+[IO.File]::WriteAllText((Join-Path $demo 'src/build.go'), "package demo`r`n// TODO: TODO`r`n", $utf8)
 [IO.File]::WriteAllText((Join-Path $demo 'src/example.md'), "TODO: omitted`n", $utf8)
 
 .\bin\dct.exe search TODO $demo --ext .txt --ext .go --json
@@ -71,13 +71,13 @@ $utf8 = [Text.UTF8Encoding]::new($false)
 
 ```json
 {"path":"notes.txt","line":1,"text":"TODO: review"}
-{"path":"src/build.go","line":2,"text":"TODO: TODO"}
+{"path":"src/build.go","line":2,"text":"// TODO: TODO"}
 ```
 
 خروجی دستور دوم اندازهٔ فایل را به بایت گزارش می‌کند. اندازه شامل بایت‌های CRLF است، درحالی‌که جست‌وجو آن‌ها را از متن رکورد کنار می‌گذارد.
 
 ```json
-{"path":"src/build.go","bytes":19}
+{"path":"src/build.go","bytes":29}
 ```
 
 برای دیدن تفاوت «بدون نتیجه» و «خطا»، همان پوشه را نگه دارید و دو دستور زیر را اجرا کنید.
