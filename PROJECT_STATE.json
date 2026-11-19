@@ -1,8 +1,16 @@
 {
-    "next_action":  "Await explicit user acceptance of the A02 release review",
+    "next_action":  "Verify the A02 streaming and performance release candidate",
     "status":  "release_review",
     "blocker":  null,
     "evidence":  "docs/RELEASE_EVIDENCE.md",
+    "latest_private_release":  {
+        "tag":  "v0.1.0",
+        "source_commit":  "02472793619d8a644634068759ecb2e826a39797",
+        "ci_run":  44536777289,
+        "source_artifact":  14536722607,
+        "url":  "https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0",
+        "manifest":  "docs/releases/v0.1.0-SHA256SUMS.txt"
+    },
     "candidate_version":  "0.1.0",
     "verified_implementation_commit":  "482ebacf9d2dcc940c1e6931652b49610dee797a",
     "verified_release_source_commit":  "1d41dcc0184a7fad5e09e1e7c9ee6cefc37dd930",

@@ -4,11 +4,9 @@
 
 The original Go/Cobra implementation takes inspiration from the recursive search and file filters in [ripgrep](https://github.com/BurntSushi/ripgrep). `dct` includes hidden files, uses case-sensitive literal matching, and applies only explicit suffix filters. Its scope and performance goals are defined by the [v0.1 contract](docs/SPEC.md).
 
-## Install the 0.1.0 candidate
+## Install v0.1.0
 
-Use the `dct-packages` bundle from CI run `44523796632` at source commit `1d41dcc0184a7fad5e09e1e7c9ee6cefc37dd930`. GitHub listed November 26, 2026 at 13:27:23 CET as the download expiration. The outer archive, the three target ZIPs, and `SHA256SUMS.txt` are retained privately in `dist/hosted-44523796632/` in the original workspace. [Private artifact 14528472864](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44523796632/artifacts/14528472864)
-
-Compare the outer ZIP's SHA-256 with the digest in the release evidence. From the extracted bundle directory, compare `SHA256SUMS.txt` with the checked-in manifest and verify the three target ZIPs before choosing the archive for your platform. The candidate packages are unsigned. [Release evidence](docs/RELEASE_EVIDENCE.md) · [Pinned SHA-256 manifest](docs/RELEASE_SHA256SUMS.txt)
+Download the ZIPs and `SHA256SUMS.txt` from the private GitHub Release. The ZIPs were built by the verified workflow for the tagged `main` commit. Compare the downloaded manifest with the versioned copy and verify the ZIPs before extracting the package for your platform. The packages are unsigned. [Private v0.1.0 release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0) · [Release provenance](docs/releases/v0.1.0.md) · [SHA-256 manifest](docs/releases/v0.1.0-SHA256SUMS.txt)
 
 | Target | Archive | Executable |
 | --- | --- | --- |

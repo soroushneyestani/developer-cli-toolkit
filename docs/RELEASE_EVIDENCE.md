@@ -1,12 +1,20 @@
 # A02 Developer CLI Toolkit release evidence
 
-## Candidate and source
+## Approved v0.1.0 release
+
+GitHub PR #1 was merged with both original parents preserved. The private `v0.1.0` release points to the accepted `main` commit `02472793619d8a644634068759ecb2e826a39797`. Its uploaded packages came from the exact main workflow run `44536777289`, artifact `14536722607`. Every uploaded asset matched its verified local copy byte for byte. [Private release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0) · [Source and asset verification](releases/v0.1.0.md)
+
+## Archived v0.1.0 review evidence
+
+The following sections record the artifact seen during review. Its checksums apply to those archived bytes. [Published asset manifest](releases/v0.1.0-SHA256SUMS.txt)
+
+### Candidate and source
 
 - Version `0.1.0`. The candidate archive was built from commit `1d41dcc0184a7fad5e09e1e7c9ee6cefc37dd930` on `codex/a02`. The pull request CI run started on November 19, 2026 at 13:25:48 CET and recorded success at 13:27:29 CET. [Private workflow run 44523796632](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44523796632)
 - Subsequent documentation-only CI runs verify their own source revisions. The candidate package remains pinned to run `44523796632` and artifact `14528472864` so readers can independently verify the exact archive reviewed here.
-- The repository is private and the pull request targeting `main` is still Draft. [Draft pull request #1](https://github.com/soroushneyestani/developer-cli-toolkit/pull/1)
+- The repository was private and PR #1 was Draft during this verification. The approved PR has since been merged. [Pull request #1](https://github.com/soroushneyestani/developer-cli-toolkit/pull/1)
 
-## What was verified
+### What was verified
 
 | Gate | Result and scope |
 | --- | --- |
@@ -21,7 +29,7 @@
 
 The native integration tests build and run executables on their own runners. The separate package build produces the distribution archives. Linux and macOS archive payloads were checked for integrity and architecture during review. Direct execution of those extracted payloads was outside this verification. [Test history](EVIDENCE.md) · [CLI contract](SPEC.md)
 
-## Verified packages
+### Verified packages
 
 GitHub artifact `14528472864` is **8,982,978 bytes**. Its outer `dct-packages.zip` SHA-256 is `2261c04556de25eb3d793d1b1da5ebc716171ccf450ec944d841d20652ef7fa1`. GitHub listed expiration on November 26, 2026 at 13:27:23 CET (`2026-11-26T12:27:23Z`). [Private dct-packages artifact](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44523796632/artifacts/14528472864)
 
@@ -33,13 +41,13 @@ GitHub artifact `14528472864` is **8,982,978 bytes**. Its outer `dct-packages.zi
 
 The verified outer ZIP, the three target ZIPs, and their original `SHA256SUMS.txt` are retained privately in `dist/hosted-44523796632/` in the original workspace. This copy remains available locally when the GitHub Actions download expires. The checked-in manifest records the three target ZIP digests for this artifact. [Pinned SHA-256 manifest](RELEASE_SHA256SUMS.txt)
 
-## Historical verification
+### Historical verification
 
 The implementation baseline is `482ebacf9d2dcc940c1e6931652b49610dee797a`. Its native matrix and package job passed on November 18, 2026 in run `44307143679`, resolving the Windows CRLF checkout blocker. The dependency and history scanners reported no vulnerabilities and no leaks in that run. [Private workflow run 44307143679](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44307143679)
 
 Historical artifact `14428662773` is 8,982,494 bytes with outer SHA-256 `1630089350a96cc38169b634a7a5a5cf4ab8407c2b85f7cdf2c7df028b7c1d46`. Its listed expiration was November 25, 2026 at 13:49:02 CET. The corresponding local archives and manifest remain under `dist/hosted-44307143679/`. Each package set has its own ZIP digests. The three candidate executable payloads match the corresponding historical executable payloads byte for byte. [Historical private artifact](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44307143679/artifacts/14428662773)
 
-## Reproduce the checks
+### Reproduce the checks
 
 From the project directory with Go `1.27.4` and PowerShell 7 available, run the real verifier and packaging script as needed.
 
@@ -48,13 +56,13 @@ pwsh -NoProfile -File scripts/verify.ps1
 pwsh -NoProfile -File scripts/package.ps1
 ```
 
-To verify the candidate download or retained copy, check `dct-packages.zip` with `Get-FileHash -Algorithm SHA256` against the outer digest above. Extract the bundle and verify the three target ZIPs using the manifest for artifact `14528472864`. The packaging script creates a new archive set with its own manifest. [README verification and extraction steps](../README.md#install-the-010-candidate)
+To verify the candidate download or retained copy, check `dct-packages.zip` with `Get-FileHash -Algorithm SHA256` against the outer digest above. Extract the bundle and verify the three target ZIPs using the manifest for artifact `14528472864`. The packaging script creates a new archive set with its own manifest. [Pinned review manifest](RELEASE_SHA256SUMS.txt)
 
-## Release review items
+### Release review items
 
 - Product scope is recursive, literal, case-sensitive UTF-8 search and regular-file inspection. Hidden entries follow normal selection. Regex, stdin input, ignore-file processing, and numeric performance targets are outside the candidate scope.
 - The selected path list and a full search file affect memory use. Keep the live file tree stable for repeatable output. A read or write error can follow earlier results. Consumers should check the exit code before using all records as complete output.
 - Unix JSON paths containing invalid UTF-8 use replacement characters. Linux and macOS archives may extract with mode `0644`; set the execute bit when needed.
 - The packages are unsigned and include third-party notices and licenses. SHA-256 verifies package bytes against the pinned digests. Signing, public licensing and wider distribution remain separate review decisions.
-- The project remains in `release_review` pending explicit user acceptance. Tagging `v0.1.0`, creating a private GitHub Release with the verified assets and checksums, and any PR merge require approval. [Draft pull request #1](https://github.com/soroushneyestani/developer-cli-toolkit/pull/1)
+- The review gate for these materials was satisfied by the user's explicit v0.1.0 approval. The accepted merge and published binaries are recorded separately. [Published v0.1.0 evidence](releases/v0.1.0.md)
 - The review includes the user documentation and release notes. [Persian tutorial](LEARNING_FA.md) · [English website article](WEBSITE_EN.md) · [English Instagram copy](INSTAGRAM_EN.md) · [Changelog](../CHANGELOG.md)
