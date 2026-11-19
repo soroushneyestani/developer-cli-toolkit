@@ -1,0 +1,3 @@
+71f7a68b2975973db6da54eab11c10d40dbaef6eedf1b8f13f014028e91d1db5  dct-linux-amd64.zip
+d49602af59b78aacf8b794df74b0a995654ef3a6b5adea4b60d21ebf5dad355a  dct-windows-amd64.zip
+3c365f7740a3e863bdd7ac3b986c3f5e22fa74747a5e4bc9357df2c590e55915  dct-darwin-arm64.zip

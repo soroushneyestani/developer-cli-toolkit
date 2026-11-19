@@ -2,7 +2,7 @@
 
 ## Stable v0.1.1
 
-The stable version uses streaming search with the reviewed literal-search and inspection contract. The public release supplies Windows amd64, Linux amd64 and macOS arm64 packages and tagged source archives. Its SHA-256 manifest applies to that exact package set. The previous RC and historical build records below describe their own source and bytes. [Stable release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.1) · [Changelog](../CHANGELOG.md)
+The stable version uses streaming search with the reviewed literal-search and inspection contract. The public release supplies Windows amd64, Linux amd64 and macOS arm64 packages and tagged source archives. Its SHA-256 manifest applies to that exact package set. The stable tag resolves to `2623811347200ff5433332479ac0e2b75e3fb958`. Exact main CI run `44582995235` passed and produced artifact `14559337068`. The checked-in proof records anonymous verification of five assets and both source archives. Older RC and historical records below retain their own provenance. [Stable provenance](releases/v0.1.1.md) · [Stable SHA-256 manifest](releases/v0.1.1-SHA256SUMS.txt) [Stable release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.1) · [Changelog](../CHANGELOG.md)
 
 ## Open-source preparation
 

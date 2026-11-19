@@ -1,6 +1,6 @@
 # Open-source release procedure
 
-The owner approved public MIT distribution of eligible original material in the existing repository. The historical `v0.1.0` tag and its assets trace to their original main build. PR #2 carries streaming and the stable `v0.1.1` preparation. [Private baseline](v0.1.0.md) · [Draft PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2) · [Publication checklist](../../FINAL_PUBLICATION_CHECKLIST.md)
+The owner approved public MIT distribution of eligible original material in the existing repository. The historical `v0.1.0` tag and its assets trace to their original main build. PR #2 carries streaming and the stable `v0.1.1` preparation. [Historical baseline](v0.1.0.md) · [Merged PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2) · [Publication checklist](../../FINAL_PUBLICATION_CHECKLIST.md)
 
 ## Review before a visibility change
 
@@ -26,7 +26,7 @@ The default branch is `main`. Keep merge commits enabled. On the public reposito
 - `Native verification (macos-15)`
 - `Package binaries`
 
-GitHub rejected private ruleset inspection with a plan restriction on the current repository. Record the protections as recommendations until available and verify their effective state around the visibility transition. Enable private vulnerability reporting when GitHub makes it available and check the reporting form. Keep the current descriptive repository title, project homepage, and accurate Go, CLI, search, inspection, and NDJSON topics. [GitHub vulnerability reporting](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/configure-vulnerability-reporting/configure-for-a-repository)
+The private repository previously hit a plan restriction. The effective public settings are recorded in the stable release evidence. [Verified configuration](v0.1.1.md#public-repository-and-audit) Enable private vulnerability reporting when GitHub makes it available and check the reporting form. Keep the current descriptive repository title, project homepage, and accurate Go, CLI, search, inspection, and NDJSON topics. [GitHub vulnerability reporting](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/configure-vulnerability-reporting/configure-for-a-repository)
 
 ## Limits to disclose
 

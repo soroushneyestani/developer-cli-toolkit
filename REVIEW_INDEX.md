@@ -4,7 +4,7 @@ A02 is in `release_review` for `v0.1.1`. The historical `v0.1.0` release is the 
 
 PR #2 carries the open-source release preparation. The checklist tracks release verification, and the release procedure records how the full source and packages are published. [Final publication checklist](FINAL_PUBLICATION_CHECKLIST.md) · [Release procedure](docs/releases/OPEN_SOURCE_RELEASE.md) · [PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2)
 
-The ownership, historical email, and release-asset decisions are recorded separately. [Final publication decisions](FINAL_PUBLICATION_DECISIONS.md)
+The public stable release, exact CI, source and verified assets are recorded separately. [v0.1.1 release evidence](docs/releases/v0.1.1.md) [Final publication decisions](FINAL_PUBLICATION_DECISIONS.md)
 
 ## Documentation
 
