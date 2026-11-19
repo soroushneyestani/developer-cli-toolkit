@@ -2,6 +2,8 @@
 
 Developer CLI Toolkit is in `release_review`. The repository is private and PR #2 is Draft. The published private baseline is `v0.1.0`. The reviewed engineering version is `0.1.1-rc.1`. The draft's Checks tab and preparation summary identify the exact preparation commit and its hosted assets. [Draft PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2) · [CI checks](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2/checks)
 
+The final decisions report records the verified address categories, publication paths, and historical asset treatment. [Final publication decisions](FINAL_PUBLICATION_DECISIONS.md)
+
 ## Source and license audit
 
 - [x] Matched all three remote branches and `v0.1.0` against the local refs. The pre-preparation history at `f6c3b9727c2fcfbf067de2c6472862818c6bcde7` contains 15 commits, 44 paths and 110 unique tracked blobs. Inspected the original Go source, scripts, fixtures, documentation, attribution and historical file inventory. The tracked blobs are regular UTF-8 text. The audit found no vendored application code or recorded outside contributors. One unreachable local blob was outside the ref history.

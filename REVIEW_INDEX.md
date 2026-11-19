@@ -4,6 +4,8 @@ A02 is in `release_review` for `0.1.1-rc.1`. The private `v0.1.0` release is the
 
 Open-source preparation is included in Draft PR #2. The checklist tracks the owner decisions and the release procedure describes how to make the full source accessible after approval. [Final publication checklist](FINAL_PUBLICATION_CHECKLIST.md) · [Release procedure](docs/releases/OPEN_SOURCE_RELEASE.md) · [Draft PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2)
 
+The ownership, historical email, and release-asset decisions are recorded separately. [Final publication decisions](FINAL_PUBLICATION_DECISIONS.md)
+
 ## Documentation
 
 - [README](README.md) covers setup, installation, and command examples.

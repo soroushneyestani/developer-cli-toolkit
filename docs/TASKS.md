@@ -22,6 +22,7 @@
 - [x] Review the streaming candidate and verify its contract, regression tests, and benchmark evidence.
 - [x] Prepare the original MIT license, keep dependency licenses and notices, and audit the published surface and Git history.
 - [x] Prepare the source build and release procedure, contribution and security policies, and publication documents.
+- [x] Audit historical Git and GitHub email fields, verify the published assets and tag archives, and configure A02's verified noreply for future commits. [Publication decisions](../FINAL_PUBLICATION_DECISIONS.md)
 - [ ] Obtain explicit final acceptance and resolve the historical disclosure and licensing decisions. [Final publication checklist](../FINAL_PUBLICATION_CHECKLIST.md)
 
 The project remains in `release_review` for the final engineering acceptance. [Release evidence](RELEASE_EVIDENCE.md)
