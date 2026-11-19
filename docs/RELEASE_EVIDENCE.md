@@ -1,5 +1,17 @@
 # A02 Developer CLI Toolkit release evidence
 
+## 0.1.1-rc.1 engineering candidate
+
+The pinned candidate was built by the private branch push workflow from commit `541aff83f8675b5d6aac9c98a28adcc1228fb052` on `codex/a02-streaming`. Its code is at checkpoint `aaf9a9c05b9a93fb77a517215c99dddc93a26df3`. Native Windows, Linux, and macOS verification and packaging passed on both the branch push and Draft PR runs. The subsequent evidence checkpoint keeps the runtime, tests, and packaging inputs from the pinned source. [Draft PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2) · [Exact CI run 44540116482](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482) · [Verified build artifact 14537687323](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482/artifacts/14537687323)
+
+The authenticated download's outer ZIP is 9,474,410 bytes with SHA-256 `53afa2a5d787f023210e39a127d4bc2da12c86913efec3909bc7b80b798d6677`. Its three platform archives passed CRC and SHA-256 checks and contained the expected executable targets and licenses. The manifest's SHA-256 is `f770371ec7a65240881ffa898745426bbbc42765ebe64e3151ecd6e63066d45a`. The outer ZIP, platform archives, and manifest are retained privately under `dist/hosted-44540116482/` in the workspace. [Candidate SHA-256 manifest](releases/v0.1.1-rc.1-SHA256SUMS.txt) · [0.1.1-rc.1 build evidence](releases/v0.1.1-rc.1-build.json)
+
+The packaged Windows binary passed a direct smoke test with 5,002 ordered NDJSON records, dense temporary staging, late NUL and truncated UTF-8 suppression, boundary-spanning Unicode, CRLF and final CR, exits 0 through 2, and temporary-file cleanup. The packaged Windows executable matches the benchmarked candidate binary byte for byte. Linux and macOS native CI executed the CLI built on each runner. Distribution packages for those two targets were inspected for integrity and build settings. [Test summary](TEST_SUMMARY.md)
+
+The benchmark compares the released v0.1.0 binary with an exact streaming checkpoint build. It verifies output equivalence and measures time and peak working set on generated Windows workloads. This candidate keeps the ordinary validation buffers bounded and still materializes each complete matching line for output. Dense output can require space in the temporary directory. [Benchmark results](BENCHMARKS.md) · [Streaming ADR](adr/0003-streaming-search.md)
+
+A02 remains in `release_review` awaiting explicit final engineering acceptance.
+
 ## Approved v0.1.0 release
 
 GitHub PR #1 was merged with both original parents preserved. The private `v0.1.0` release points to the accepted `main` commit `02472793619d8a644634068759ecb2e826a39797`. Its uploaded packages came from the exact main workflow run `44536777289`, artifact `14536722607`. Every uploaded asset matched its verified local copy byte for byte. [Private release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0) · [Source and asset verification](releases/v0.1.0.md)

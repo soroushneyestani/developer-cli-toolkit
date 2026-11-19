@@ -18,6 +18,10 @@ A02 is in `release_review` for `0.1.1-rc.1`. The private `v0.1.0` release is the
 - [Local verifier](scripts/verify.ps1), [packaging script](scripts/package.ps1), and [GitHub Actions workflow](.github/workflows/ci.yml) define the runnable checks.
 - [Published v0.1.0 SHA-256 manifest](docs/releases/v0.1.0-SHA256SUMS.txt) lists the three released distribution archive digests. [Third-party notices](THIRD_PARTY_NOTICES.md) identify their redistributed components.
 
+## Verified 0.1.1-rc.1 package
+
+The candidate is pinned to `541aff83f8675b5d6aac9c98a28adcc1228fb052`. Verify the three platform archives against the candidate manifest before extracting a platform package. The retained package path and outer checksum are in the release evidence. [Release evidence](docs/RELEASE_EVIDENCE.md) · [Candidate SHA-256 manifest](docs/releases/v0.1.1-rc.1-SHA256SUMS.txt) · [Draft PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2) · [Exact CI run 44540116482](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482) · [Verified build artifact 14537687323](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482/artifacts/14537687323)
+
 ## Archived v0.1.0 review package
 
 The v0.1.0 review ZIP preserved artifact `14528472864` from run `44523796632`, previously reviewed in PR #1. That source revision and manifest differ from the subsequently published release assets. [Historical review evidence](docs/RELEASE_EVIDENCE.md#archived-v010-review-evidence) · [Merged PR #1](https://github.com/soroushneyestani/developer-cli-toolkit/pull/1)

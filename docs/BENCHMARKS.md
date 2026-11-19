@@ -1,6 +1,6 @@
 # A02 streaming search benchmarks
 
-On November 19, 2026, the Windows amd64 build of `0.1.1-rc.1` reduced median peak working set by approximately 87% on both the sparse 96 MiB fixture and the 48 MiB single-line no-match fixture. The candidate used less peak memory in all five measured workloads. End-to-end time varied with the input and number of matches. [Raw measurements and SHA-256 values](BENCHMARKS_WINDOWS.json)
+On November 19, 2026, the Windows amd64 build of `0.1.1-rc.1` reduced median peak working set by approximately 87% on both the sparse 96 MiB fixture and the 48 MiB single-line no-match fixture. The candidate had a lower median peak working set in all five measured workloads. End-to-end time varied with the input and number of matches. [Raw measurements and SHA-256 values](BENCHMARKS_WINDOWS.json)
 
 ## Builds and method
 

@@ -1,5 +1,5 @@
 {
-  "next_action": "Verify the A02 streaming and performance release candidate",
+  "next_action": "Await explicit final A02 engineering approval",
   "status": "release_review",
   "blocker": null,
   "evidence": "docs/RELEASE_EVIDENCE.md",
@@ -12,7 +12,6 @@
     "manifest": "docs/releases/v0.1.0-SHA256SUMS.txt"
   },
   "candidate_version": "0.1.1-rc.1",
-  "candidate_implementation_commit": "aaf9a9c05b9a93fb77a517215c99dddc93a26df3",
   "reviewed_v0_1_0_candidate": {
     "implementation_commit": "482ebacf9d2dcc940c1e6931652b49610dee797a",
     "source_commit": "1d41dcc0184a7fad5e09e1e7c9ee6cefc37dd930",
@@ -20,5 +19,15 @@
     "artifact": 14528472864,
     "outer_sha256": "2261c04556de25eb3d793d1b1da5ebc716171ccf450ec944d841d20652ef7fa1",
     "manifest": "docs/RELEASE_SHA256SUMS.txt"
+  },
+  "verified_candidate": {
+    "source_commit": "541aff83f8675b5d6aac9c98a28adcc1228fb052",
+    "implementation_commit": "aaf9a9c05b9a93fb77a517215c99dddc93a26df3",
+    "branch": "codex/a02-streaming",
+    "ci_run": 44540116482,
+    "artifact": 14537687323,
+    "outer_sha256": "53afa2a5d787f023210e39a127d4bc2da12c86913efec3909bc7b80b798d6677",
+    "manifest": "docs/releases/v0.1.1-rc.1-SHA256SUMS.txt",
+    "draft_pr": 2
   }
 }

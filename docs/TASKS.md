@@ -15,6 +15,10 @@
 - [x] Obtain explicit user acceptance of v0.1.0.
 - [x] Merge PR #1 preserving the original commits and verify `main`.
 - [x] Publish v0.1.0 privately with packages built from the tagged `main` commit and verify all uploaded assets.
-- [ ] Verify the subsequent A02 streaming and performance release candidate.
+- [x] Stream source validation and preserve literal results, ordering, and process exit semantics.
+- [x] Verify oversized lines, temporary match staging, read failures, and cleanup.
+- [x] Compare v0.1.0 and the streaming build using reproducible time and memory measurements.
+- [x] Verify the streaming candidate on native CI and check its exact distribution archive.
+- [ ] Obtain explicit final engineering acceptance of the A02 streaming candidate.
 
 The project remains in `release_review` for the final engineering acceptance. [Release evidence](RELEASE_EVIDENCE.md)

@@ -1,10 +1,20 @@
-# A02 v0.1.0 test summary
+# A02 verification summary
+
+## 0.1.1-rc.1
+
+At source `541aff83f8675b5d6aac9c98a28adcc1228fb052`, the Windows, Linux, and macOS native gates passed formatting, module integrity, vet, integration tests, and build. Packaging passed after the matrix. The Linux dependency and Git history scans passed. [Exact CI run 44540116482](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482) · [Verified build artifact 14537687323](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482/artifacts/14537687323) · [0.1.1-rc.1 build evidence](releases/v0.1.1-rc.1-build.json)
+
+The streaming tests cover early matches followed by invalid UTF-8 or NUL, dense replay and cleanup, oversized lines, cross-buffer literals and Unicode, CRLF boundary handling, and read and output error behavior. Windows skips the colon/tab filename fixture and can skip the POSIX chmod fixture. The Windows sharing-violation test covers a read failure separately. [Integration tests](../search_test.go) · [Streaming fault tests](../stream_search_test.go) · [Windows read error test](../search_windows_test.go)
+
+The packaged Windows binary reproduced 5,002 ordered records with exit and spill-cleanup checks. The native Windows verifier passed locally, and 18 deterministic Windows fixtures matched v0.1.0 output and status byte for byte. Working set and elapsed time were measured separately on generated data. [Release evidence](RELEASE_EVIDENCE.md) · [Benchmark results](BENCHMARKS.md)
+
+## Pre-merge v0.1.0 verification
 
 The v0.1.0 review measurements and artifact references below describe the archived pre-merge evidence. The later approved main build has its own run and published asset checksums. [Published v0.1.0 evidence](releases/v0.1.0.md)
 
 The binary candidate was built and verified at `1d41dcc0184a7fad5e09e1e7c9ee6cefc37dd930` on `codex/a02`. All three native verification jobs and the subsequent packaging job passed. The candidate is pinned to this run and artifact for release review. [Private candidate CI run 44523796632](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44523796632) · [Private artifact 14528472864](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44523796632/artifacts/14528472864)
 
-## Native verification
+### Native verification
 
 | GitHub Actions runner | Result | Distribution package and binary type |
 | --- | --- | --- |
@@ -16,7 +26,7 @@ The native tests compile and run the CLI against synthetic fixtures. They cover 
 
 The candidate Linux scan steps finished successfully using `govulncheck v1.10.0` and `gitleaks v8.30.1`. These are scoped to the workflow's dependency and checked-out Git history checks. [CI workflow](../.github/workflows/ci.yml)
 
-## Verified candidate artifact
+### Verified candidate artifact
 
 The retained `dct-packages.zip` for artifact `14528472864` is 8,982,978 bytes. Its SHA-256 is `2261c04556de25eb3d793d1b1da5ebc716171ccf450ec944d841d20652ef7fa1`. The outer ZIP and all three inner ZIPs passed CRC checks. Every inner ZIP matched the bundled `SHA256SUMS.txt`, whose SHA-256 is `032ce1fe00289796f0f1b831b62c3c987e816e97d93b00589f918638daea0afa`. The archives include executables, release notes, and third-party notices and licenses. [Pinned checksum manifest](RELEASE_SHA256SUMS.txt) · [Release evidence](RELEASE_EVIDENCE.md)
 
@@ -32,13 +42,13 @@ The Windows executable was extracted directly from the verified candidate archiv
 
 The Linux and macOS distribution executables were checked for archive integrity and target architecture. Direct execution of those extracted distribution executables remains outside this review. Native CLI execution on both platforms was covered by the integration tests.
 
-## Historical verification
+### Historical verification
 
 Run `44307143679` at implementation checkpoint `482ebacf9d2dcc940c1e6931652b49610dee797a` passed the same runner matrix and packaging. The historical Windows archive's executable passed a separate smoke test. The executable payloads in the candidate and historical packages were compared byte for byte and matched for all three targets. [Historical CI run 44307143679](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44307143679) · [Verification history](EVIDENCE.md)
 
 Historical artifact `14428662773` had outer SHA-256 `1630089350a96cc38169b634a7a5a5cf4ab8407c2b85f7cdf2c7df028b7c1d46`. Its ZIP digests apply to that artifact only.
 
-## Outstanding limitations
+### Outstanding limitations
 
 - Search is literal, case-sensitive, and operates on UTF-8 text. Hidden entries participate in selection. Regex, stdin input, and ignore-file processing are outside v0.1.0.
 - Memory grows with the selected path list and the largest search file. Filesystem changes during execution can affect results. A read or write error can leave earlier records on stdout before exit 2.
