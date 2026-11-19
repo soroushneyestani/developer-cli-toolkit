@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"errors"
+	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -54,6 +55,49 @@ func TestSearchCLI(t *testing.T) {
 
 		result := runCLI(t, binary, root, "search", "needle")
 		assertCLI(t, result, 0, "long.txt:1:"+line+"\n", false)
+	})
+
+	t.Run("UTF-8 across read boundaries and final carriage return", func(t *testing.T) {
+		root := t.TempDir()
+		line := strings.Repeat("x", 64*1024-1) + "🚀 needle \uFFFD"
+		writeFixture(t, root, "boundary.txt", line+"\r\n\r\nneedle\r")
+
+		result := runCLI(t, binary, root, "search", "needle")
+		assertCLI(t, result, 0, "boundary.txt:1:"+line+"\nboundary.txt:3:needle\r\n", false)
+	})
+
+	t.Run("late invalid bytes discard staged matches", func(t *testing.T) {
+		root := t.TempDir()
+		prefix := strings.Repeat("needle "+strings.Repeat("x", 96)+"\n", 5000)
+		writeFixture(t, root, "a-nul.txt", prefix+"\x00\n")
+		writeFixture(t, root, "b-invalid.txt", prefix+"\xff\n")
+		writeFixture(t, root, "c-truncated.txt", prefix+"\xe2\x82")
+
+		result := runCLI(t, binary, root, "search", "needle", "--json")
+		if result.exit != 1 || result.stdout != "" || result.stderr != "" {
+			t.Fatalf("invalid files produced exit %d and %d stdout bytes, stderr %q", result.exit, len(result.stdout), result.stderr)
+		}
+		writeFixture(t, root, "z-valid.txt", "needle in valid file")
+		result = runCLI(t, binary, root, "search", "needle", "--json")
+		assertCLI(t, result, 0, "{\"path\":\"z-valid.txt\",\"line\":1,\"text\":\"needle in valid file\"}\n", false)
+	})
+
+	t.Run("high-output file replays records in order", func(t *testing.T) {
+		root := t.TempDir()
+		const repetitions = 5000
+		line := "needle " + strings.Repeat("x", 96)
+		writeFixture(t, root, "a-many.txt", strings.Repeat(line+"\n", repetitions))
+		writeFixture(t, root, "b-after.txt", "needle after replay")
+		var want strings.Builder
+		for i := 1; i <= repetitions; i++ {
+			fmt.Fprintf(&want, "a-many.txt:%d:%s\n", i, line)
+		}
+		want.WriteString("b-after.txt:1:needle after replay\n")
+
+		result := runCLI(t, binary, root, "search", "needle")
+		if result.exit != 0 || result.stdout != want.String() || result.stderr != "" {
+			t.Fatalf("exit %d, stdout bytes %d (want %d), stderr %q", result.exit, len(result.stdout), want.Len(), result.stderr)
+		}
 	})
 
 	t.Run("unmatched search", func(t *testing.T) {
