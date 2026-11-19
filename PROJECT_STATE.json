@@ -1,9 +1,13 @@
 {
-    "next_action":  "Verify the hosted Windows checkout and the complete matrix before release review",
-    "status":  "blocked",
-    "blocker":  "Hosted Linux and macOS passed. The Windows job's CRLF checkout failed gofmt. The LF checkout fix awaits hosted verification.",
-    "evidence":  "docs/EVIDENCE.md",
+    "next_action":  "Await explicit user acceptance of the A02 release review",
+    "status":  "release_review",
+    "blocker":  null,
+    "evidence":  "docs/RELEASE_EVIDENCE.md",
+    "candidate_version":  "0.1.0",
+    "verified_implementation_commit":  "482ebacf9d2dcc940c1e6931652b49610dee797a",
+    "verified_ci_run":  44307143679,
+    "verified_release_artifact":  14428662773,
     "verified_windows":  true,
     "verified_hosted_linux_macos":  true,
-    "verified":  false
+    "verified":  true
 }

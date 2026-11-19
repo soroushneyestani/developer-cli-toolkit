@@ -54,3 +54,11 @@ Human action: install Go with go and gofmt on PATH, reopen the shell and confirm
 - The first [private hosted matrix](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44305452488) passed on Linux and macOS. Windows reported all five Go sources as unformatted and packaging was skipped.
 - A local index checkout with `core.autocrlf=true` reproduced the same five `gofmt` findings. After declaring LF checkout for Go files, the same fixture produced zero formatting findings. The native Windows verifier passed.
 - The corrected hosted Windows and packaging jobs await the next feature-branch run.
+
+## 2026-11-19 — Release-review verification
+
+- GitHub returned a private Draft PR with head `482ebacf9d2dcc940c1e6931652b49610dee797a`. [Run 44307143679](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44307143679) returned success for native Windows, Linux, macOS, and packaging. The Windows CRLF checkout blocker is resolved.
+- The Windows-hosted delimiter and chmod-based unreadable-file fixtures skipped. The sharing-violation case accounts for Windows read-error coverage. The Linux dependency and history scanners completed successfully.
+- Downloaded artifact `14428662773` and matched its reported SHA-256. All three target ZIP hashes matched `SHA256SUMS.txt`. ZIP CRCs, binary headers, build settings, and included notices passed. The executable payloads match the earlier local archives.
+- Ran the hosted Windows package's executable from ignored local scratch against synthetic fixtures. Version, filtered search, inspection, no-match exit 1, and malformed suffix exit 2 matched their contracts. The README and education examples use verified outputs.
+- Completed release review materials and recorded package and platform limits in [release evidence](RELEASE_EVIDENCE.md).

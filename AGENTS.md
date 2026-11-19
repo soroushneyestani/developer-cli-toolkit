@@ -21,5 +21,5 @@ Work directly in the current VS Code Codex session on this original project insi
 - Commit only actual completed changes, with one logical purpose per commit. No empty/vanity commits.
 - Record test output and any honest limitations in docs/EVIDENCE.md.
 - If blocked, record why and what exact human action is necessary.
-- Set PROJECT_STATE.json.status to review only if MVP works and verification passes.
+- Set `PROJECT_STATE.json` status to `release_review` after the working MVP, required verification, and release materials are complete. Wait for explicit user acceptance before recording completion or advancing the queue.
 - End each invocation with a short summary: modified files, commits, tests, next task, blockers.

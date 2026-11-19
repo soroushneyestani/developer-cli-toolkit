@@ -8,6 +8,9 @@
 - [x] Package binaries and add a native Windows/Linux/macOS CI matrix.
 - [x] Document runnable sample workflows, release candidate, and limitations.
 - [x] Run the native Linux and macOS jobs and record their results before release review.
-- [ ] Verify the fixed Windows checkout and the complete hosted packaging pipeline.
+- [x] Verify the fixed Windows checkout and the complete hosted packaging pipeline.
+- [x] Check hosted package integrity and execute the packaged Windows smoke fixture.
+- [x] Finish the README, changelog, Persian education, English website and Instagram copy, and release evidence.
+- [ ] Obtain explicit user acceptance of the A02 release review.
 
-Windows native verification, local release packaging, workflow lint, and security scans passed. Hosted Linux and macOS verified successfully. The first hosted Windows checkout used CRLF for Go sources and failed formatting. The checkout fix awaits the complete CI run.
+The corrected hosted Windows checkout and the entire native matrix and packaging pipeline passed. See [release evidence](RELEASE_EVIDENCE.md) for checksums, artifacts and remaining review items.

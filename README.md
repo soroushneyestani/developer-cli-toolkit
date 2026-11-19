@@ -4,6 +4,28 @@
 
 The original Go/Cobra implementation takes inspiration from the recursive search and file filters in [ripgrep](https://github.com/BurntSushi/ripgrep). `dct` includes hidden files, uses case-sensitive literal matching, and applies only explicit suffix filters. Its scope and performance goals are defined by the [v0.1 contract](docs/SPEC.md).
 
+## Install the 0.1.0 candidate
+
+Get the `dct-packages` artifact from the [verified private CI run](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44307143679/artifacts/14428662773) while available. It contains three target ZIPs and a `SHA256SUMS.txt` manifest. From the extracted bundle directory, verify the ZIPs against the manifest before choosing the archive for your platform.
+
+| Target | Archive | Executable |
+| --- | --- | --- |
+| Windows amd64 | `dct-windows-amd64.zip` | `dct.exe` |
+| Linux amd64 | `dct-linux-amd64.zip` | `dct` |
+| macOS arm64 | `dct-darwin-arm64.zip` | `dct` |
+
+```powershell
+Get-Content SHA256SUMS.txt | ForEach-Object {
+    $expected, $name = $_ -split '\s+', 2
+    $actual = (Get-FileHash -LiteralPath $name -Algorithm SHA256).Hash
+    if ($actual -ine $expected) { throw "Checksum mismatch for $name" }
+}
+Expand-Archive -LiteralPath dct-windows-amd64.zip -DestinationPath dct-windows
+.\dct-windows\dct.exe --version
+```
+
+On Linux, verify with `sha256sum -c SHA256SUMS.txt`. On macOS, use `shasum -a 256 -c SHA256SUMS.txt`. Extract the target ZIP, set its run permission with `chmod +x dct` if needed, and run `./dct --version`. The packaged executable runs without a local Go installation.
+
 ## Build and verify
 
 Use Go 1.26 or newer. Use Go 1.27.4 to match the verified Windows toolchain.
@@ -25,7 +47,7 @@ dct --help
 dct --version
 ```
 
-`root` defaults to the current directory. Pass `--` before a literal or a path that starts with `-`. Repeat `--ext` to include files matching any supplied suffix. Suffixes are case-sensitive, start with a dot, and may contain multiple dots.
+`root` defaults to the current directory. Put any flags before `--` when passing a literal or a path that starts with `-`. Repeat `--ext` to include files matching any supplied suffix. Suffixes are case-sensitive, start with a dot, and may contain multiple dots.
 
 Search emits one record per matching line and skips files containing NUL or invalid UTF-8. Inspect includes all regular files that pass the suffix filter. Both commands skip symlink entries and reject symlink roots.
 
@@ -42,11 +64,13 @@ Check the exit code before treating output as complete. Errors may follow partia
 In PowerShell from the project directory, create a synthetic workspace and run the built binary.
 
 ```powershell
-New-Item -ItemType Directory -Force bin/demo | Out-Null
-Set-Content -Encoding ascii bin/demo/notes.txt 'TODO: review the change'
-.\bin\dct.exe search TODO bin/demo --ext .txt --json
+$demo = Join-Path (Get-Location).Path ('bin/dct-demo-' + [guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $demo | Out-Null
+[IO.File]::WriteAllBytes((Join-Path $demo 'notes.txt'), [Text.Encoding]::ASCII.GetBytes("TODO: review the change`n"))
+.\bin\dct.exe search TODO $demo --ext .txt --json
 # {"path":"notes.txt","line":1,"text":"TODO: review the change"}
-.\bin\dct.exe inspect bin/demo --json
+.\bin\dct.exe inspect $demo --json
+# {"path":"notes.txt","bytes":24}
 ```
 
 Use NDJSON when paths or contents can contain output delimiters. Read it one line at a time and decode each record independently.
@@ -55,10 +79,10 @@ Use NDJSON when paths or contents can contain output delimiters. Read it one lin
 
 Run `pwsh -NoProfile -File scripts/package.ps1` with Go 1.27.4. On Windows PowerShell, use `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/package.ps1`. A successful run creates a directory under `dist/` with ZIP archives for Linux amd64, Windows amd64, and macOS arm64, plus `SHA256SUMS.txt`. Verify each archive's SHA-256 before extraction. On a Unix host, run `chmod +x dct` if the extracted binary lacks the execute bit.
 
-The [CI workflow](.github/workflows/ci.yml) defines native verification on Windows, Linux and macOS, and makes archive upload depend on those jobs. [Evidence](docs/EVIDENCE.md) records which checks have run.
+The [CI workflow](.github/workflows/ci.yml) runs native integration tests and builds on Windows, Linux and macOS, and makes archive upload depend on those jobs. The [release evidence](docs/RELEASE_EVIDENCE.md) records the tested commit, checksum results, and what ran on each platform.
 
 ## Architecture and limits
 
-`main.go` parses commands with Cobra, renders output and maps errors to exit codes. `workspace.go` scopes filesystem access to the opened directory, sorts relative paths, and checks each search file before matching its lines. Memory usage grows with the number of selected paths and the size of the largest searched file. Results describe a live filesystem, so keep the tree stable for reproducible output. On Unix, filenames with invalid UTF-8 bytes are represented with replacement characters in JSON.
+`main.go` parses commands with Cobra, renders output and maps errors to exit codes. `workspace.go` scopes filesystem access to the opened directory, sorts relative paths, and checks each search file before matching its lines. Memory usage grows with the number of selected paths and the size of the largest searched file. Results describe a live filesystem, so keep the tree stable for reproducible output. On Unix, filenames with invalid UTF-8 bytes are represented with replacement characters in JSON. Search takes its literal and root from command arguments. Regex matching, stdin search, ignore-file rules and numeric performance targets are outside the 0.1.0 contract.
 
-See the [design decisions](docs/adr/), [test evidence](docs/EVIDENCE.md), and [third-party notices](THIRD_PARTY_NOTICES.md).
+See the [Persian tutorial](docs/LEARNING_FA.md), [technical article](docs/WEBSITE_EN.md), [design decisions](docs/adr/), [test evidence](docs/EVIDENCE.md), and [third-party notices](THIRD_PARTY_NOTICES.md).
