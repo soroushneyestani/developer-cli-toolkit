@@ -1,5 +1,9 @@
 # A02 Developer CLI Toolkit release evidence
 
+## Open-source preparation
+
+Draft PR #2 adds the project MIT license, retains the existing dependency licenses, and requires them in new binary packages. The review added no stream-runtime change. All three local preparation archives passed CRC, checksum, license and machine-header checks and contained executables identical to the pinned RC. The PR's preparation summary records the exact hosted asset and test runs. [Publication checklist](../FINAL_PUBLICATION_CHECKLIST.md) · [Release procedure](releases/OPEN_SOURCE_RELEASE.md) · [Draft PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2)
+
 ## 0.1.1-rc.1 engineering candidate
 
 The pinned candidate was built by the private branch push workflow from commit `541aff83f8675b5d6aac9c98a28adcc1228fb052` on `codex/a02-streaming`. Its code is at checkpoint `aaf9a9c05b9a93fb77a517215c99dddc93a26df3`. Native Windows, Linux, and macOS verification and packaging passed on both the branch push and Draft PR runs. The subsequent evidence checkpoint keeps the runtime, tests, and packaging inputs from the pinned source. [Draft PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2) · [Exact CI run 44540116482](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482) · [Verified build artifact 14537687323](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482/artifacts/14537687323)

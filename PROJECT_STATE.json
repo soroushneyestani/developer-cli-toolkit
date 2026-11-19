@@ -1,8 +1,19 @@
 {
-  "next_action": "Await explicit final A02 engineering approval",
+  "next_action": "Await explicit A02 publication approval and the historical disclosure and licensing decisions",
   "status": "release_review",
   "blocker": null,
   "evidence": "docs/RELEASE_EVIDENCE.md",
+  "publication_preparation": {
+    "checklist": "FINAL_PUBLICATION_CHECKLIST.md",
+    "visibility": "private",
+    "draft_pr": 2,
+    "pending_owner_decisions": [
+      "Rights to license the original work",
+      "Public disclosure of historical Git author metadata",
+      "Treatment of the historical v0.1.0 release",
+      "Approval of the stable release and visibility change"
+    ]
+  },
   "latest_private_release": {
     "tag": "v0.1.0",
     "source_commit": "02472793619d8a644634068759ecb2e826a39797",

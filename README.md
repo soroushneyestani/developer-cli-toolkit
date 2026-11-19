@@ -4,6 +4,8 @@
 
 The original Go/Cobra implementation takes inspiration from recursive search and file filters. `dct` includes hidden files, uses case-sensitive literal matching, and applies explicit suffix filters. [CLI contract](docs/SPEC.md) · [ripgrep reference](https://github.com/BurntSushi/ripgrep)
 
+The source and release review are currently private. The approved baseline is `v0.1.0`. The follow-up `0.1.1-rc.1` adds streaming and is being prepared for open-source publication. [Review index](REVIEW_INDEX.md) · [Publication checklist](FINAL_PUBLICATION_CHECKLIST.md)
+
 ## Install v0.1.0
 
 Download the ZIPs and `SHA256SUMS.txt` from the private GitHub Release. The ZIPs were built by the verified workflow for the tagged `main` commit. Compare the downloaded manifest with the versioned copy and verify the ZIPs before extracting the package for your platform. The packages are unsigned. [Private v0.1.0 release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0) · [Release provenance](docs/releases/v0.1.0.md) · [SHA-256 manifest](docs/releases/v0.1.0-SHA256SUMS.txt)
@@ -28,9 +30,14 @@ On Linux, verify with `sha256sum -c SHA256SUMS.txt`. On macOS, use `shasum -a 25
 
 ## Build and verify
 
-The engineering review branch builds `0.1.1-rc.1`. Use the private release for the approved `v0.1.0` baseline. [Engineering review](REVIEW_INDEX.md)
+The complete source lives in the repository. Clone it, or extract the source ZIP or tarball for the revision you want to build. Private review requires repository access. To build the streaming candidate, check out the reviewed commit in the engineering review. [Source repository](https://github.com/soroushneyestani/developer-cli-toolkit) · [Engineering review](REVIEW_INDEX.md)
 
-Use Go 1.26 or newer. Use Go 1.27.4 to match the verified native CI and packaging toolchain.
+```sh
+git clone https://github.com/soroushneyestani/developer-cli-toolkit.git
+cd developer-cli-toolkit
+```
+
+Use Go 1.26 or newer. Go 1.27.4 matches the verified CI and packaging toolchain. On Linux and macOS, run `go build -mod=readonly -trimpath -o dct .` and `./dct --version`. On Windows, run `go build -mod=readonly -trimpath -o dct.exe .` and `.\dct.exe --version`. A clone defaults to `main`. Check the reported version when switching revisions.
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/verify.ps1
@@ -81,7 +88,7 @@ Use NDJSON when paths or contents can contain output delimiters. Read it one lin
 
 Run `pwsh -NoProfile -File scripts/package.ps1` with Go 1.27.4. On Windows PowerShell, use `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/package.ps1`. A successful run creates a directory under `dist/` with ZIP archives for Linux amd64, Windows amd64, and macOS arm64, plus `SHA256SUMS.txt`. Verify each archive's SHA-256 before extraction. On a Unix host, run `chmod +x dct` if the extracted binary lacks the execute bit.
 
-The [CI workflow](.github/workflows/ci.yml) runs native integration tests and builds on Windows, Linux and macOS, and makes archive upload depend on those jobs. The [release evidence](docs/RELEASE_EVIDENCE.md) records the tested commit, checksum results, and what ran on each platform.
+All three binary packages produced from this branch include the project license and dependency license texts. CI runs native integration tests and builds on Windows, Linux and macOS before uploading packages. [CI workflow](.github/workflows/ci.yml) · [Release evidence](docs/RELEASE_EVIDENCE.md) · [Release procedure](docs/releases/OPEN_SOURCE_RELEASE.md)
 
 ## Architecture and limits
 
@@ -89,4 +96,8 @@ The [CI workflow](.github/workflows/ci.yml) runs native integration tests and bu
 
 Results describe a live filesystem, so keep the tree stable for reproducible output. On Unix, filenames with invalid UTF-8 bytes are represented with replacement characters in JSON. Search takes its literal and root from command arguments. Regex matching, stdin search, and ignore-file rules are outside the CLI contract.
 
-See the [Persian tutorial](docs/LEARNING_FA.md), [technical article](docs/WEBSITE_EN.md), [design decisions](docs/adr/), [test evidence](docs/EVIDENCE.md), and [third-party notices](THIRD_PARTY_NOTICES.md).
+## License and participation
+
+The MIT license covers the original source and documentation in this review branch. The Go toolchain and libraries retain their respective licenses. Historical `v0.1.0` assets keep their recorded provenance. [MIT license](LICENSE) · [Third-party notices](THIRD_PARTY_NOTICES.md)
+
+See the [contribution guide](CONTRIBUTING.md), [security policy](SECURITY.md), [Persian tutorial](docs/LEARNING_FA.md), [technical article](docs/WEBSITE_EN.md), and [test evidence](docs/EVIDENCE.md).

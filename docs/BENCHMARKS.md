@@ -26,6 +26,8 @@ The sparse and small-file fixtures took less time in this run. Dense results can
 
 Extract `dct.exe` from the private `dct-windows-amd64.zip` for v0.1.0 after verifying the archive against its release manifest. In a clean source checkout of `aaf9a9c05b9a93fb77a517215c99dddc93a26df3`, build the candidate with Go `1.27.4` on Windows amd64. [Release manifest](releases/v0.1.0-SHA256SUMS.txt)
 
+If the archived baseline binary is unavailable, use the same compiler and flags in a clean checkout of the released `v0.1.0` commit `02472793619d8a644634068759ecb2e826a39797`. Record the SHA-256 of the rebuilt executable and compare it with the baseline digest above. This keeps new measurements tied to the binary actually used.
+
 ```powershell
 $env:CGO_ENABLED = '0'
 go build -mod=readonly -trimpath -buildvcs=false -o dct-rc.exe .

@@ -19,6 +19,9 @@
 - [x] Verify oversized lines, temporary match staging, read failures, and cleanup.
 - [x] Compare v0.1.0 and the streaming build using reproducible time and memory measurements.
 - [x] Verify the streaming candidate on native CI and check its exact distribution archive.
-- [ ] Obtain explicit final engineering acceptance of the A02 streaming candidate.
+- [x] Review the streaming candidate and verify its contract, regression tests, and benchmark evidence.
+- [x] Prepare the original MIT license, keep dependency licenses and notices, and audit the published surface and Git history.
+- [x] Prepare the source build and release procedure, contribution and security policies, and publication documents.
+- [ ] Obtain explicit final acceptance and resolve the historical disclosure and licensing decisions. [Final publication checklist](../FINAL_PUBLICATION_CHECKLIST.md)
 
 The project remains in `release_review` for the final engineering acceptance. [Release evidence](RELEASE_EVIDENCE.md)
