@@ -1,6 +1,15 @@
 {
-  "next_action": "Create specification and first executable test",
-  "status": "in_progress",
-  "blocker": null,
-  "verified": false
+    "next_action":  "Await explicit user acceptance of the A02 release review",
+    "status":  "release_review",
+    "blocker":  null,
+    "evidence":  "docs/RELEASE_EVIDENCE.md",
+    "candidate_version":  "0.1.0",
+    "verified_implementation_commit":  "482ebacf9d2dcc940c1e6931652b49610dee797a",
+    "verified_release_source_commit":  "1d41dcc0184a7fad5e09e1e7c9ee6cefc37dd930",
+    "verified_ci_run":  44523796632,
+    "verified_release_artifact":  14528472864,
+    "verified_release_sha256":  "2261c04556de25eb3d793d1b1da5ebc716171ccf450ec944d841d20652ef7fa1",
+    "verified_windows":  true,
+    "verified_hosted_linux_macos":  true,
+    "verified":  true
 }
