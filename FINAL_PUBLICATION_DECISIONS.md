@@ -1,6 +1,6 @@
 # A02 final publication decisions
 
-A02 is in `release_review`. The repository is private, `main` and `v0.1.0` point to `02472793619d8a644634068759ecb2e826a39797`, and PR #2 is Draft. This audit identifies the rights and disclosure decisions that still need the owner's approval. [Draft PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2) · [Publication checklist](FINAL_PUBLICATION_CHECKLIST.md)
+This document preserves the pre-publication audit. At its checkpoint the repository was private, `main` and `v0.1.0` pointed to `02472793619d8a644634068759ecb2e826a39797`, and PR #2 was Draft. The owner subsequently confirmed personal ownership and authority for eligible original material, consented to public disclosure of their own Git metadata, and selected publication in this existing repository with its history intact. [Historical MIT grant](docs/releases/v0.1.0-MIT.md) [PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2) · [Publication checklist](FINAL_PUBLICATION_CHECKLIST.md)
 
 ## 1. MIT and ownership
 
@@ -66,7 +66,7 @@ The exact preparation checkpoint `b43e08c36e4ee893164df23fb48ccf11a4a6e886` pass
 
 After choosing the publication destination and approving the scope, set the [CLI version](main.go) to `0.1.1` and prepare the [stable changelog entry](CHANGELOG.md) and release notes on the chosen path. Review that exact source revision, verify fresh Windows, Linux and macOS CI, and build and check newly checksummed source and binary archives with the project and upstream licenses. If integrating into the existing repository, merge only the approved PR revision. Match the future `v0.1.1` tag and release provenance to the exact verified stable commit in the publication repository. The verified prerelease evidence continues to describe the RC. [Stable release procedure](docs/releases/OPEN_SOURCE_RELEASE.md)
 
-## Owner decisions required
+## Decisions requested at the audit checkpoint
 
 1. Confirm your authority to grant MIT for the original A02 work, including relevant employment, client, contributor and assignment rights. Identify any specific exceptions.
 2. Choose the publication destination. Authorize public exposure of the existing Git metadata, or authorize preparation of a separate standalone public repository from a reviewed source snapshot. For the second option, provide the destination owner and repository name. The independent snapshot is recommended if you want the historical address kept private.

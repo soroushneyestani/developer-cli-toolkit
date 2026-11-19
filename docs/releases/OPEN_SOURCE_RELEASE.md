@@ -1,6 +1,6 @@
 # Open-source release procedure
 
-The repository is private during final review. The approved `v0.1.0` tag and its private release assets trace to the verified main build. Draft PR #2 carries the `0.1.1-rc.1` streaming changes and publication preparation. The owner decides whether to approve the later `v0.1.1` release and public visibility. [Private baseline](v0.1.0.md) · [Draft PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2) · [Publication checklist](../../FINAL_PUBLICATION_CHECKLIST.md)
+The owner approved public MIT distribution of eligible original material in the existing repository. The historical `v0.1.0` tag and its assets trace to their original main build. PR #2 carries streaming and the stable `v0.1.1` preparation. [Private baseline](v0.1.0.md) · [Draft PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2) · [Publication checklist](../../FINAL_PUBLICATION_CHECKLIST.md)
 
 ## Review before a visibility change
 
@@ -19,7 +19,7 @@ The `0.1.1-rc.1` review builds have prerelease version output. The historical RC
 
 ## GitHub settings for launch
 
-The default branch is `main`. Keep merge commits enabled. On the public repository, protect `main` by requiring a PR, resolved conversations, current CI and the checks below. Block force pushes and branch deletion. Use merge-commit history. Require an independent review when an eligible reviewer is available, and retain an explicit owner approval gate when the owner is the sole maintainer. [GitHub protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
+The default branch is `main`. Keep merge commits enabled. On the public repository, protect `main` by requiring a PR, resolved conversations, current CI and the checks below. Block force pushes and branch deletion. Use merge-commit history. Set the required approval count to zero for the sole maintainer. Keep the PR, CI and conversation-resolution requirements. [GitHub protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 
 - `Native verification (ubuntu-24.04)`
 - `Native verification (windows-2025)`

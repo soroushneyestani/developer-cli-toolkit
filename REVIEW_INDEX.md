@@ -1,8 +1,8 @@
 # A02 Developer CLI Toolkit engineering review
 
-A02 is in `release_review` for `0.1.1-rc.1`. The private `v0.1.0` release is the approved baseline. [Private v0.1.0 release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0) · [Published asset provenance](docs/releases/v0.1.0.md)
+A02 is in `release_review` for `v0.1.1`. The historical `v0.1.0` release is the baseline. [Historical v0.1.0 release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0) · [Published asset provenance](docs/releases/v0.1.0.md)
 
-Open-source preparation is included in Draft PR #2. The checklist tracks the owner decisions and the release procedure describes how to make the full source accessible after approval. [Final publication checklist](FINAL_PUBLICATION_CHECKLIST.md) · [Release procedure](docs/releases/OPEN_SOURCE_RELEASE.md) · [Draft PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2)
+PR #2 carries the open-source release preparation. The checklist tracks release verification, and the release procedure records how the full source and packages are published. [Final publication checklist](FINAL_PUBLICATION_CHECKLIST.md) · [Release procedure](docs/releases/OPEN_SOURCE_RELEASE.md) · [PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2)
 
 The ownership, historical email, and release-asset decisions are recorded separately. [Final publication decisions](FINAL_PUBLICATION_DECISIONS.md)
 
@@ -24,7 +24,7 @@ The ownership, historical email, and release-asset decisions are recorded separa
 
 ## Verified 0.1.1-rc.1 package
 
-The candidate is pinned to `541aff83f8675b5d6aac9c98a28adcc1228fb052`. Verify the three platform archives against the candidate manifest before extracting a platform package. The retained package path and outer checksum are in the release evidence. [Release evidence](docs/RELEASE_EVIDENCE.md) · [Candidate SHA-256 manifest](docs/releases/v0.1.1-rc.1-SHA256SUMS.txt) · [Draft PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2) · [Exact CI run 44540116482](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482) · [Verified build artifact 14537687323](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482/artifacts/14537687323)
+The candidate is pinned to `541aff83f8675b5d6aac9c98a28adcc1228fb052`. Verify the three platform archives against the candidate manifest before extracting a platform package. The retained package path and outer checksum are in the release evidence. [Release evidence](docs/RELEASE_EVIDENCE.md) · [Candidate SHA-256 manifest](docs/releases/v0.1.1-rc.1-SHA256SUMS.txt) · [PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2) · [Exact CI run 44540116482](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482) · [Verified build artifact 14537687323](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44540116482/artifacts/14537687323)
 
 ## Archived v0.1.0 review package
 

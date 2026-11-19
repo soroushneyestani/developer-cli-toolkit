@@ -4,11 +4,11 @@
 
 The original Go/Cobra implementation takes inspiration from recursive search and file filters. `dct` includes hidden files, uses case-sensitive literal matching, and applies explicit suffix filters. [CLI contract](docs/SPEC.md) · [ripgrep reference](https://github.com/BurntSushi/ripgrep)
 
-The source and release review are currently private. The approved baseline is `v0.1.0`. The follow-up `0.1.1-rc.1` adds streaming and is being prepared for open-source publication. [Review index](REVIEW_INDEX.md) · [Publication checklist](FINAL_PUBLICATION_CHECKLIST.md)
+Version `v0.1.1` adds streaming search and keeps the existing command and exit-code contract. The original project source and documentation are available under the MIT license. [Changelog](CHANGELOG.md) · [MIT license](LICENSE)
 
-## Install v0.1.0
+## Install v0.1.1
 
-Download the ZIPs and `SHA256SUMS.txt` from the private GitHub Release. The ZIPs were built by the verified workflow for the tagged `main` commit. Compare the downloaded manifest with the versioned copy and verify the ZIPs before extracting the package for your platform. The packages are unsigned. [Private v0.1.0 release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0) · [Release provenance](docs/releases/v0.1.0.md) · [SHA-256 manifest](docs/releases/v0.1.0-SHA256SUMS.txt)
+Download the ZIP for your platform and `SHA256SUMS.txt` from the same release. Verify the ZIP before extracting it. The packages are unsigned. [v0.1.1 release assets](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.1) · [Release evidence](docs/RELEASE_EVIDENCE.md)
 
 | Target | Archive | Executable |
 | --- | --- | --- |
@@ -17,27 +17,31 @@ Download the ZIPs and `SHA256SUMS.txt` from the private GitHub Release. The ZIPs
 | macOS arm64 | `dct-darwin-arm64.zip` | `dct` |
 
 ```powershell
-Get-Content SHA256SUMS.txt | ForEach-Object {
-    $expected, $name = $_ -split '\s+', 2
-    $actual = (Get-FileHash -LiteralPath $name -Algorithm SHA256).Hash
-    if ($actual -ine $expected) { throw "Checksum mismatch for $name" }
-}
-Expand-Archive -LiteralPath dct-windows-amd64.zip -DestinationPath dct-windows
+$archive = 'dct-windows-amd64.zip'
+$rows = @(Get-Content -LiteralPath SHA256SUMS.txt | Where-Object {
+    ($_ -split '\s+', 2)[1] -ceq $archive
+})
+if ($rows.Count -ne 1) { throw "Missing or ambiguous checksum for $archive" }
+$expected = ($rows[0] -split '\s+', 2)[0]
+$actual = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash
+if ($actual -ine $expected) { throw "Checksum mismatch for $archive" }
+Expand-Archive -LiteralPath $archive -DestinationPath dct-windows
 .\dct-windows\dct.exe --version
 ```
 
-On Linux, verify with `sha256sum -c SHA256SUMS.txt`. On macOS, use `shasum -a 256 -c SHA256SUMS.txt`. Extract the target ZIP, set its run permission with `chmod +x dct` if needed, and run `./dct --version`. The packaged executable runs without a local Go installation.
+On Linux, run `sha256sum dct-linux-amd64.zip`. On macOS, run `shasum -a 256 dct-darwin-arm64.zip`. Compare the result with the matching line in `SHA256SUMS.txt`. Extract the target ZIP, set its run permission with `chmod +x dct` if needed, and run `./dct --version`. The packaged executable reports `dct version 0.1.1` and runs without a local Go installation.
 
 ## Build and verify
 
-The complete source lives in the repository. Clone it, or extract the source ZIP or tarball for the revision you want to build. Private review requires repository access. To build the streaming candidate, check out the reviewed commit in the engineering review. [Source repository](https://github.com/soroushneyestani/developer-cli-toolkit) · [Engineering review](REVIEW_INDEX.md)
+Clone the repository and check out the stable tag, or extract its source ZIP or tarball. [Source repository](https://github.com/soroushneyestani/developer-cli-toolkit) · [Source archives](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.1)
 
 ```sh
 git clone https://github.com/soroushneyestani/developer-cli-toolkit.git
 cd developer-cli-toolkit
+git switch --detach v0.1.1
 ```
 
-Use Go 1.26 or newer. Go 1.27.4 matches the verified CI and packaging toolchain. On Linux and macOS, run `go build -mod=readonly -trimpath -o dct .` and `./dct --version`. On Windows, run `go build -mod=readonly -trimpath -o dct.exe .` and `.\dct.exe --version`. A clone defaults to `main`. Check the reported version when switching revisions.
+Use Go 1.26 or newer. Go 1.27.4 matches the CI and packaging toolchain. On Linux and macOS, run `go build -mod=readonly -trimpath -o dct .` and `./dct --version`. On Windows, run `go build -mod=readonly -trimpath -o dct.exe .` and `.\dct.exe --version`.
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/verify.ps1
@@ -64,13 +68,13 @@ Search emits one record per matching line and skips files containing NUL or inva
 | --- | --- |
 | 0 | Search found matches, or inspection succeeded. |
 | 1 | Search completed with no matches. |
-| 2 | Invalid invocation, filesystem failure, or output failure. Diagnostics go to stderr. |
+| 2 | Invalid invocation, filesystem, temporary-storage, or output failure. Diagnostics go to stderr. |
 
 Check the exit code before treating output as complete. Errors may follow partial results.
 
 ## Sample workflow
 
-In PowerShell from the project directory, create a synthetic workspace and run the built binary.
+After running the verifier in Windows PowerShell, create a synthetic workspace and run the resulting binary.
 
 ```powershell
 $demo = Join-Path (Get-Location).Path ('bin/dct-demo-' + [guid]::NewGuid().ToString('N'))
@@ -88,7 +92,7 @@ Use NDJSON when paths or contents can contain output delimiters. Read it one lin
 
 Run `pwsh -NoProfile -File scripts/package.ps1` with Go 1.27.4. On Windows PowerShell, use `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/package.ps1`. A successful run creates a directory under `dist/` with ZIP archives for Linux amd64, Windows amd64, and macOS arm64, plus `SHA256SUMS.txt`. Verify each archive's SHA-256 before extraction. On a Unix host, run `chmod +x dct` if the extracted binary lacks the execute bit.
 
-All three binary packages produced from this branch include the project license and dependency license texts. CI runs native integration tests and builds on Windows, Linux and macOS before uploading packages. [CI workflow](.github/workflows/ci.yml) · [Release evidence](docs/RELEASE_EVIDENCE.md) · [Release procedure](docs/releases/OPEN_SOURCE_RELEASE.md)
+All three `v0.1.1` binary packages include the project license and dependency license texts. CI runs native integration tests on Windows, Linux and macOS before building the release packages. [CI workflow](.github/workflows/ci.yml) · [Release evidence](docs/RELEASE_EVIDENCE.md) · [Release procedure](docs/releases/OPEN_SOURCE_RELEASE.md)
 
 ## Architecture and limits
 
@@ -98,6 +102,6 @@ Results describe a live filesystem, so keep the tree stable for reproducible out
 
 ## License and participation
 
-The MIT license covers the original source and documentation in this review branch. The Go toolchain and libraries retain their respective licenses. Historical `v0.1.0` assets keep their recorded provenance. [MIT license](LICENSE) · [Third-party notices](THIRD_PARTY_NOTICES.md)
+The MIT license covers the original source and documentation. The Go toolchain and libraries retain their respective licenses. The historical `v0.1.0` archives contain the earlier project tree and dependency notices. Consult that release's notes for its licensing and provenance. [MIT license](LICENSE) · [Third-party notices](THIRD_PARTY_NOTICES.md) · [Historical v0.1.0 release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0)
 
 See the [contribution guide](CONTRIBUTING.md), [security policy](SECURITY.md), [Persian tutorial](docs/LEARNING_FA.md), [technical article](docs/WEBSITE_EN.md), and [test evidence](docs/EVIDENCE.md).

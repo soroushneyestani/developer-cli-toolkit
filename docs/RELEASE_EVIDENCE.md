@@ -1,5 +1,9 @@
 # A02 Developer CLI Toolkit release evidence
 
+## Stable v0.1.1
+
+The stable version uses streaming search with the reviewed literal-search and inspection contract. The public release supplies Windows amd64, Linux amd64 and macOS arm64 packages and tagged source archives. Its SHA-256 manifest applies to that exact package set. The previous RC and historical build records below describe their own source and bytes. [Stable release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.1) · [Changelog](../CHANGELOG.md)
+
 ## Open-source preparation
 
 Draft PR #2 adds the project MIT license, retains the existing dependency licenses, and requires them in new binary packages. The review added no stream-runtime change. All three local preparation archives passed CRC, checksum, license and machine-header checks and contained executables identical to the pinned RC. The PR's preparation summary records the exact hosted asset and test runs. [Publication checklist](../FINAL_PUBLICATION_CHECKLIST.md) · [Release procedure](releases/OPEN_SOURCE_RELEASE.md) · [Draft PR #2](https://github.com/soroushneyestani/developer-cli-toolkit/pull/2)
@@ -18,7 +22,7 @@ A02 remains in `release_review` awaiting explicit final engineering acceptance.
 
 ## Approved v0.1.0 release
 
-GitHub PR #1 was merged with both original parents preserved. The private `v0.1.0` release points to the accepted `main` commit `02472793619d8a644634068759ecb2e826a39797`. Its uploaded packages came from the exact main workflow run `44536777289`, artifact `14536722607`. Every uploaded asset matched its verified local copy byte for byte. [Private release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0) · [Source and asset verification](releases/v0.1.0.md)
+GitHub PR #1 was merged with both original parents preserved. The historical `v0.1.0` release points to the accepted commit `02472793619d8a644634068759ecb2e826a39797`. It was originally published privately. Its uploaded packages came from the exact main workflow run `44536777289`, artifact `14536722607`. Every uploaded asset matched its verified local copy byte for byte. [Historical release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.0) · [Source and asset verification](releases/v0.1.0.md) · [Historical MIT grant](releases/v0.1.0-MIT.md)
 
 ## Archived v0.1.0 review evidence
 

@@ -1,5 +1,5 @@
 {
-  "next_action": "Await the owner's MIT authority confirmation, public repository choice, and v0.1.0 licensing decision",
+  "next_action": "Verify the authorized v0.1.1 main build and public release, then await final owner review",
   "status": "release_review",
   "blocker": null,
   "evidence": "docs/RELEASE_EVIDENCE.md",
@@ -9,12 +9,9 @@
     "license_preference": "MIT",
     "visibility": "private",
     "draft_pr": 2,
-    "pending_owner_decisions": [
-      "Rights to license the original work",
-      "Public disclosure of historical Git author and committer metadata or a separate public source snapshot",
-      "Express licensing of the historical v0.1.0 release or private archival treatment",
-      "Approval of the exact stable revision, integration and publication"
-    ]
+    "pending_owner_decisions": [],
+    "approved_visibility": "public",
+    "approved_destination": "soroushneyestani/developer-cli-toolkit"
   },
   "latest_private_release": {
     "tag": "v0.1.0",
@@ -42,5 +39,6 @@
     "outer_sha256": "53afa2a5d787f023210e39a127d4bc2da12c86913efec3909bc7b80b798d6677",
     "manifest": "docs/releases/v0.1.1-rc.1-SHA256SUMS.txt",
     "draft_pr": 2
-  }
+  },
+  "planned_stable_version": "0.1.1"
 }
