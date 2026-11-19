@@ -86,3 +86,7 @@ Human action: install Go with go and gofmt on PATH, reopen the shell and confirm
 ## 2026-11-19 — Public stable v0.1.1
 
 - The tagged main commit `2623811347200ff5433332479ac0e2b75e3fb958` passed all four checks in run `44582995235`. Verified platform, license, CRC and SHA-256 checks for the three binary archives and confirmed both public source archives against their exact tag tree. [Public release](https://github.com/soroushneyestani/developer-cli-toolkit/releases/tag/v0.1.1) · [Stable build evidence](releases/v0.1.1.md)
+
+## 2026-11-19 — A02 closure
+
+The owner accepted public v0.1.1. Required macOS, Linux, Windows and packaging checks passed on the exact pre-closure main commit `3c4c10adca36efc47c56aabed72b4ef7f7835b8f`. The five public assets and both source archives matched the release record. [Completion record](COMPLETION.md) · [Exact post-merge CI](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44587543545)
