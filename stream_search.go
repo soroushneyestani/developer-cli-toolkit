@@ -3,12 +3,14 @@ package main
 import (
 	"bufio"
 	"bytes"
+	"crypto/sha256"
 	"encoding/binary"
 	"errors"
 	"fmt"
 	"io"
 	"os"
 	"slices"
+	"strings"
 	"unicode/utf8"
 )
 
@@ -34,7 +36,7 @@ func searchFiles(root *os.Root, files []string, literal []byte, emit func(search
 			return found, err
 		}
 		reader.Reset(file)
-		valid, err := collectMatches(reader, literal, &matches)
+		valid, err := collectMatches(reader, file, literal, &matches)
 		file.Close()
 
 		if valid && err == nil {
@@ -53,18 +55,29 @@ func searchFiles(root *os.Root, files []string, literal []byte, emit func(search
 	return found, nil
 }
 
-func collectMatches(reader *bufio.Reader, literal []byte, matches *stagedMatches) (bool, error) {
-	var longLine []byte
+func collectMatches(reader *bufio.Reader, source io.ReaderAt, literal []byte, matches *stagedMatches) (bool, error) {
+	var offset int64
 	var stagingErr error
 	for lineNumber := 1; ; lineNumber++ {
 		line, err := reader.ReadSlice('\n')
 		if err == bufio.ErrBufferFull {
-			longLine = append(longLine[:0], line...)
-			for err == bufio.ErrBufferFull {
-				line, err = reader.ReadSlice('\n')
-				longLine = append(longLine, line...)
+			long, err := scanLongLine(reader, line, literal)
+			if err != nil && err != io.EOF {
+				return false, err
 			}
-			line = longLine
+			if !long.valid {
+				return false, drainRejectedSource(reader, err)
+			}
+			if stagingErr == nil && long.matched {
+				if err := matches.stageLongLine(lineNumber, source, offset, long); err != nil {
+					stagingErr = fmt.Errorf("stage search matches: %w", err)
+				}
+			}
+			offset += long.consumed
+			if err == io.EOF {
+				return true, stagingErr
+			}
+			continue
 		}
 		if err != nil && err != io.EOF {
 			return false, err
@@ -73,13 +86,9 @@ func collectMatches(reader *bufio.Reader, literal []byte, matches *stagedMatches
 			return true, stagingErr
 		}
 		if bytes.IndexByte(line, 0) >= 0 || !utf8.Valid(line) {
-			// A read failure makes the command fail even for a file we would skip.
-			if err == io.EOF {
-				return false, nil
-			}
-			_, err = io.Copy(io.Discard, reader)
-			return false, err
+			return false, drainRejectedSource(reader, err)
 		}
+		offset += int64(len(line))
 		if err == nil {
 			line = line[:len(line)-1]
 			line = bytes.TrimSuffix(line, []byte{'\r'})
@@ -96,6 +105,15 @@ func collectMatches(reader *bufio.Reader, literal []byte, matches *stagedMatches
 	}
 }
 
+func drainRejectedSource(reader *bufio.Reader, lastRead error) error {
+	// A read failure makes the command fail even for a file we would skip.
+	if lastRead == io.EOF {
+		return nil
+	}
+	_, err := io.Copy(io.Discard, reader)
+	return err
+}
+
 // stagedMatches preserves full-file validation without retaining all matching
 // text in memory. Each record stores its line number, byte length, and text.
 type stagedMatches struct {
@@ -106,34 +124,85 @@ type stagedMatches struct {
 }
 
 func (s *stagedMatches) add(lineNumber int, line []byte) error {
-	binary.LittleEndian.PutUint64(s.header[:8], uint64(lineNumber))
-	binary.LittleEndian.PutUint64(s.header[8:], uint64(len(line)))
-	if s.spill == nil && len(line) <= matchMemoryLimit-len(s.memory)-matchHeaderSize {
-		needed := len(s.memory) + matchHeaderSize + len(line)
-		if needed > cap(s.memory) {
-			larger := make([]byte, len(s.memory), min(matchMemoryLimit, max(needed, cap(s.memory)*2)))
-			copy(larger, s.memory)
-			s.memory = larger
-		}
-		s.memory = append(s.memory, s.header[:]...)
-		s.memory = append(s.memory, line...)
+	s.encodeHeader(lineNumber, int64(len(line)))
+	if memory, ok := s.reserveMemory(int64(len(line))); ok {
+		copy(memory, line)
 		return nil
 	}
-	if s.spill == nil {
-		file, err := os.CreateTemp("", "dct-matches-*")
-		if err != nil {
-			return err
-		}
-		s.spill = file
-		s.writer = bufio.NewWriterSize(file, searchBufferSize)
-		if _, err := s.writer.Write(s.memory); err != nil {
-			return err
-		}
+	if err := s.startSpill(); err != nil {
+		return err
 	}
 	if _, err := s.writer.Write(s.header[:]); err != nil {
 		return err
 	}
 	_, err := s.writer.Write(line)
+	return err
+}
+
+func (s *stagedMatches) stageLongLine(lineNumber int, source io.ReaderAt, offset int64, line longLineResult) error {
+	s.encodeHeader(lineNumber, line.size)
+	section := io.NewSectionReader(source, offset, line.size)
+	if memory, ok := s.reserveMemory(line.size); ok {
+		_, err := io.ReadFull(section, memory)
+		if err != nil && err != io.EOF && err != io.ErrUnexpectedEOF {
+			return err
+		}
+		if err != nil || sha256.Sum256(memory) != line.digest {
+			return fmt.Errorf("source changed while staging long line %d", lineNumber)
+		}
+		return nil
+	}
+	if err := s.startSpill(); err != nil {
+		return err
+	}
+	if _, err := s.writer.Write(s.header[:]); err != nil {
+		return err
+	}
+	digest := sha256.New()
+	copied, err := io.Copy(io.MultiWriter(s.writer, digest), section)
+	if err != nil {
+		return err
+	}
+	var actual [sha256.Size]byte
+	digest.Sum(actual[:0])
+	if copied != line.size || actual != line.digest {
+		return fmt.Errorf("source changed while staging long line %d", lineNumber)
+	}
+	return nil
+}
+
+func (s *stagedMatches) reserveMemory(width int64) ([]byte, bool) {
+	if s.spill != nil || width > int64(matchMemoryLimit-len(s.memory)-matchHeaderSize) {
+		return nil, false
+	}
+	start := len(s.memory)
+	needed := start + matchHeaderSize + int(width)
+	if needed > cap(s.memory) {
+		larger := make([]byte, start, min(matchMemoryLimit, max(needed, cap(s.memory)*2)))
+		copy(larger, s.memory)
+		s.memory = larger
+	}
+	s.memory = s.memory[:needed]
+	copy(s.memory[start:], s.header[:])
+	return s.memory[start+matchHeaderSize:], true
+}
+
+func (s *stagedMatches) encodeHeader(lineNumber int, width int64) {
+	binary.LittleEndian.PutUint64(s.header[:8], uint64(lineNumber))
+	binary.LittleEndian.PutUint64(s.header[8:], uint64(width))
+}
+
+func (s *stagedMatches) startSpill() error {
+	if s.spill != nil {
+		return nil
+	}
+	file, err := os.CreateTemp("", "dct-matches-*")
+	if err != nil {
+		return err
+	}
+	s.spill = file
+	s.writer = bufio.NewWriterSize(file, searchBufferSize)
+	_, err = s.writer.Write(s.memory)
 	return err
 }
 
@@ -164,11 +233,22 @@ func (s *stagedMatches) replay(path string, buffer *bufio.Reader, emit func(sear
 		}
 		lineNumber := int(binary.LittleEndian.Uint64(s.header[:8]))
 		width := int(binary.LittleEndian.Uint64(s.header[8:]))
-		line = slices.Grow(line[:0], width)[:width]
-		if _, err := io.ReadFull(input, line); err != nil {
-			return found, fmt.Errorf("read temporary search match text: %w", err)
+		var text string
+		if width > searchBufferSize {
+			var builder strings.Builder
+			builder.Grow(width)
+			if _, err := io.CopyN(&builder, input, int64(width)); err != nil {
+				return found, fmt.Errorf("read temporary search match text: %w", err)
+			}
+			text = builder.String()
+		} else {
+			line = slices.Grow(line[:0], width)[:width]
+			if _, err := io.ReadFull(input, line); err != nil {
+				return found, fmt.Errorf("read temporary search match text: %w", err)
+			}
+			text = string(line)
 		}
-		if err := emit(searchMatch{Path: path, Line: lineNumber, Text: string(line)}); err != nil {
+		if err := emit(searchMatch{Path: path, Line: lineNumber, Text: text}); err != nil {
 			return found, fmt.Errorf("write search result: %w", err)
 		}
 		found = true

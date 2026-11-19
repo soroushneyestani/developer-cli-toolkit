@@ -64,6 +64,17 @@ func TestSearchCLI(t *testing.T) {
 
 		result := runCLI(t, binary, root, "search", "needle")
 		assertCLI(t, result, 0, "boundary.txt:1:"+line+"\nboundary.txt:3:needle\r\n", false)
+		result = runCLI(t, binary, root, "search", "x🚀 needle")
+		assertCLI(t, result, 0, "boundary.txt:1:"+line+"\n", false)
+	})
+
+	t.Run("carriage return at a read boundary", func(t *testing.T) {
+		root := t.TempDir()
+		withReturn := strings.Repeat("x", 64*1024-1) + "\r"
+		writeFixture(t, root, "returns.txt", withReturn+"\n"+withReturn)
+
+		result := runCLI(t, binary, root, "search", "\r")
+		assertCLI(t, result, 0, "returns.txt:2:"+withReturn+"\n", false)
 	})
 
 	t.Run("late invalid bytes discard staged matches", func(t *testing.T) {
@@ -72,6 +83,7 @@ func TestSearchCLI(t *testing.T) {
 		writeFixture(t, root, "a-nul.txt", prefix+"\x00\n")
 		writeFixture(t, root, "b-invalid.txt", prefix+"\xff\n")
 		writeFixture(t, root, "c-truncated.txt", prefix+"\xe2\x82")
+		writeFixture(t, root, "d-long-invalid.txt", "needle "+strings.Repeat("x", 3*64*1024)+"\xe2\x82\n")
 
 		result := runCLI(t, binary, root, "search", "needle", "--json")
 		if result.exit != 1 || result.stdout != "" || result.stderr != "" {
