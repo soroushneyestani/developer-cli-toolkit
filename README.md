@@ -6,7 +6,9 @@ The original Go/Cobra implementation takes inspiration from the recursive search
 
 ## Install the 0.1.0 candidate
 
-Get the `dct-packages` artifact from the [verified private CI run](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44307143679/artifacts/14428662773) while available. It contains three target ZIPs and a `SHA256SUMS.txt` manifest. From the extracted bundle directory, verify the ZIPs against the manifest before choosing the archive for your platform.
+Use the `dct-packages` bundle from CI run `44523796632` at source commit `1d41dcc0184a7fad5e09e1e7c9ee6cefc37dd930`. GitHub listed November 26, 2026 at 13:27:23 CET as the download expiration. The outer archive, the three target ZIPs, and `SHA256SUMS.txt` are retained privately in `dist/hosted-44523796632/` in the original workspace. [Private artifact 14528472864](https://github.com/soroushneyestani/developer-cli-toolkit/actions/runs/44523796632/artifacts/14528472864)
+
+Compare the outer ZIP's SHA-256 with the digest in the release evidence. From the extracted bundle directory, compare `SHA256SUMS.txt` with the checked-in manifest and verify the three target ZIPs before choosing the archive for your platform. The candidate packages are unsigned. [Release evidence](docs/RELEASE_EVIDENCE.md) · [Pinned SHA-256 manifest](docs/RELEASE_SHA256SUMS.txt)
 
 | Target | Archive | Executable |
 | --- | --- | --- |
@@ -28,7 +30,7 @@ On Linux, verify with `sha256sum -c SHA256SUMS.txt`. On macOS, use `shasum -a 25
 
 ## Build and verify
 
-Use Go 1.26 or newer. Use Go 1.27.4 to match the verified Windows toolchain.
+Use Go 1.26 or newer. Use Go 1.27.4 to match the verified native CI and packaging toolchain.
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/verify.ps1

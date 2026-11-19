@@ -11,6 +11,7 @@
 - [x] Verify the fixed Windows checkout and the complete hosted packaging pipeline.
 - [x] Check hosted package integrity and execute the packaged Windows smoke fixture.
 - [x] Finish the README, changelog, Persian education, English website and Instagram copy, and release evidence.
+- [x] Reconcile the release evidence with CI run `44523796632`, artifact `14528472864`, and the retained private archive and manifest.
 - [ ] Obtain explicit user acceptance of the A02 release review.
 
-The corrected hosted Windows checkout and the entire native matrix and packaging pipeline passed. See [release evidence](RELEASE_EVIDENCE.md) for checksums, artifacts and remaining review items.
+The corrected hosted Windows checkout and the entire native matrix and packaging pipeline passed. The project remains in `release_review`. Tagging `v0.1.0` and creating a private release require explicit user approval. [Release evidence](RELEASE_EVIDENCE.md)
